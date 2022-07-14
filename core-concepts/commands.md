@@ -1,7 +1,3 @@
----
-layout: editorial
----
-
 # Custom Commands
 
 Skript allows you to easily create custom commands in your scripts, like the following:
