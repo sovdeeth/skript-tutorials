@@ -12,7 +12,7 @@
     * [Filters](core-concepts/lists/filters.md)
   * [Loops](core-concepts/loops.md)
   * [Text?](core-concepts/text.md)
-  * [Commands](core-concepts/commands.md)
+  * [Custom Commands](core-concepts/commands.md)
   * [Advanced Concepts](core-concepts/advanced-concepts/README.md)
     * [Functions](core-concepts/advanced-concepts/functions.md)
     * [Vectors](core-concepts/advanced-concepts/vectors.md)
