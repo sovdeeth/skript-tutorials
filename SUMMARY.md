@@ -29,6 +29,7 @@
   * [Expressions](syntax-types/expressions.md)
   * [Sections](syntax-types/sections.md)
 * [Auxiliary Guides](auxiliary-guides/README.md)
+  * [Debugging](auxiliary-guides/debugging.md)
   * [Using Math](auxiliary-guides/using-math.md)
   * [Useful Config Options](auxiliary-guides/useful-config-options.md)
   * [Naming Conventions](auxiliary-guides/naming-conventions.md)
