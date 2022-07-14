@@ -134,6 +134,8 @@ Here, we've set the different items that the player will get to the `{_item}` va
 
 Variables are explained further [here](../core-concepts/variables/), in the [Core Concepts](broken-reference) section.
 
+### Expressions in Text
+
 Since we have our food in a convenient variable now, let's also tell the player exactly what food they received. We can put the result of any expression or variable into text using `%` signs.
 
 ```tcl
