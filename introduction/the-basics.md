@@ -38,7 +38,7 @@ add 2 to the player's food level
 subtract 3 from the player's food level
 ```
 
-Before we get ahead of ourselves, though, we need to talk about `the player`. In commands, the person who executes the command can be referred to as `player`, or `sender`. However, as we'll see later on, we don't always have `player` to help us out. Sometimes we'll have to get a player from a variable (explained later), or from an event value:
+Before we get ahead of ourselves, though, we need to talk about `the player`. In commands, the person who executes the command can be referred to as `player`, or `sender`. However, we don't always have `player` to help us out. Sometimes we'll have to get a player from a variable (explained later), or from an event value:
 
 ```bash
 set {_player-variable}'s food level to 10
@@ -179,7 +179,7 @@ on consume of rotten flesh:
     apply regeneration 1 to the player for 5 seconds
 ```
 
-Perfect! Now we get regen while eating flesh. If you eat multiple in a row though, the effect starts to stack in time. This may be something you like, and you can keep it like this. If you want the timer to never go above 5 seconds, though, you need to add `replacing the existing effect`
+Perfect! Now we get regen while eating flesh. If you eat multiple in a row though, the effect's duration starts to stack. This may be something you want, and you can keep it like this. If you want the timer to never go above 5 seconds, though, you need to add `replacing the existing effect`
 
 ```bash
 on consume of rotten flesh:
