@@ -1,6 +1,6 @@
 # The Basics
 
-This page will walk you through creating your first script. If this is too slow for you, feel free to jump ahead to the [Core Concepts](<../README (1).md>) section. This is just to get you comfortable with the very basics of Skript.
+This page will walk you through creating your first script. If this is too slow for you, feel free to jump ahead to the [Core Concepts](broken-reference) section. This is just to get you comfortable with the very basics of Skript.
 
 ### Creating the Script File
 
@@ -12,14 +12,14 @@ Now you've got an empty file to play around in. You can write Skript in whatever
 
 Let's start with a simple command, /food. We don't want our players to go hungry, so when they run the command we'll fill up their hunger bar for them. We start by writing out the syntax for a new command. If you want to know more about this, you can skip to [Custom Commands](../core-concepts/commands.md), but most of it isn't necessary yet.
 
-```bash
+```tcl
 # here's our command, just a basic /food.
 command /food:
     trigger:
         # this is where the code will go
 ```
 
-So we have two lines so far, the first one telling Skript that we're making a new command, and that it's named `/food`. Now we need to tell Skript what the command does, which is what `trigger` does. There are other things that commands can have, which you can look at the core concepts page for.&#x20;
+So we have two lines so far, the first one telling Skript that we're making a new command, and that it's named `/food`. The lines with `#` are comments and are just there for explanation; they don't affect the code. Now we need to tell Skript what the command does, which is what `trigger` does. There are other things that commands can have, which you can look at the core concepts page for.&#x20;
 
 You might also notice we've indented the `trigger:`. This is a really important concept in Skript. Indenting tells Skript what belongs to what. Everything indented after the `command` line belongs to that command, and if you un-indent, Skript thinks it is going to be something else. **The basic rule of thumb is to indent every time you see a colon (`:`)**, but there's more information on indentation [here](../core-concepts/indentation.md).
 
@@ -27,27 +27,27 @@ So trigger is responsible for holding all the code that runs when the command is
 
 You should see one result, called Food Level. If you look at the patterns, you can see that `player`, `food`, and `level` all show up in there.  It might be a bit hard to read, which is why we have a [syntax reading tutorial](../syntax-types/reading-syntax.md), but it's pretty simple once you know how. For now, we'll just look at the example.&#x20;
 
-```bash
+```tcl
 set the player's food level to 10
 ```
 
 We can also do some addition and subtraction really easily:
 
-```bash
+```ruby
 add 2 to the player's food level
 subtract 3 from the player's food level
 ```
 
 Before we get ahead of ourselves, though, we need to talk about `the player`. In commands, the person who executes the command can be referred to as `player`, or `sender`. However, we don't always have `player` to help us out. Sometimes we'll have to get a player from a variable (explained later), or from an event value:
 
-```bash
+```ruby
 set {_player-variable}'s food level to 10
 set the food level of event-player to 10
 ```
 
 But I digress. Let's put this line into our command:
 
-```bash
+```ruby
 command /food:
     trigger:
         set the player's food level to 10
@@ -59,7 +59,7 @@ Perfect! A simple, easy food command. It doesn't seem very fun though. Let's giv
 
 Spoilers: it's `give`:
 
-```bash
+```ruby
 command /food:
     trigger:
         give 2 steak to player
@@ -67,7 +67,7 @@ command /food:
 
 Much better. Let's add some class into this command though, and tell the player that they were given some food. Bonus points for using the docs to find the effect used to send messages.
 
-```bash
+```ruby
 command /food:
     trigger:
         give 2 steak to player
@@ -80,13 +80,13 @@ Technically, we could just write `send "You received some food!"` and Skript wou
 
 Now let's get fancy and make it so operators get golden apples instead. We can check whether a player is an op with the following condition:
 
-```bash
+```ruby
 if player is an op:
 ```
 
 Conditions are syntax elements that are essentially yes/no questions, `player is an op`, `block at player is dirt`, `name of player's tool is "hello!"`. We use these inside if statements to control what code gets run:
 
-```bash
+```tcl
 command /food:
     trigger:
         if player is an op:
@@ -105,7 +105,7 @@ You may have noticed that we have some duplicate code going on here. Generally, 
 
 Let's make this better. First, we can just move the messages outside of the if/else. They're the same in both sections, so we only need one version:
 
-```bash
+```tcl
 command /food:
     trigger:
         if player is an op:
@@ -119,7 +119,7 @@ Un-indenting the send pulls it out of the `else`, meaning it will be run whether
 
 Variables are extremely useful. They basically store data for you so you can keep using it again and again. They come in two main types, global and local variables. Global variables can be used anywhere in any script, while local variables can only be used in the command/event they were defined in. They're surrounded by `{}` and can be named pretty much whatever you want. Variables that start with `_`, like `{_local}`, are local variables. Everything else is global.
 
-```bash
+```tcl
 command /food:
     trigger:
         if player is an op:
@@ -132,7 +132,34 @@ command /food:
 
 Here, we've set the different items that the player will get to the `{_item}` variable. We can then use that after the `if` to give the right item to the player. If they're an op, `{_item}` will be set to 2 golden apples, otherwise it'll be 2 steak.&#x20;
 
-Variables are explained further [here](../core-concepts/variables/), in the [Core Concepts](<../README (1).md>) section.
+Variables are explained further [here](../core-concepts/variables/), in the [Core Concepts](broken-reference) section.
+
+Since we have our food in a convenient variable now, let's also tell the player exactly what food they received. We can put the result of any expression or variable into text using `%` signs.
+
+```tcl
+command /food:
+    trigger:
+        if player is an op:
+            set {_item} to 2 golden apples
+        else:
+            set {_item} to 2 steak
+        give {_item} to player
+        send "You receieved %{_item}%!" to player
+```
+
+The `%%` tell Skript to pay attention and read the stuff inside as code instead of just as text. This means we can just put `{_item}` in there and "2 steaks" or "2 golden apples" will automatically be sent to the player. `%%` can also be used in variable names, like`{variable::%player's uuid}`, which is a good way to make global variables specific to one player.
+
+However, %% should only ever be used in those two situations: inside a string, or inside a variable. You should not be using it outside of that.&#x20;
+
+```tcl
+# BAD
+send "test" to %player%
+set %player's tool% to stone
+
+# GOOD
+send "%event-item%" to player
+set {_tool-text} to "%player's tool%"
+```
 
 ### Using Events
 
@@ -140,7 +167,7 @@ We've been using a command all this time, but events are another extremely usefu
 
 Events are kind of like commands in that they're never indented. Commands and events always start all the way to the left. Since we've been giving players food, let's use an `on consume` event:
 
-```bash
+```ruby
 on consume:
     # code here
 ```
@@ -149,14 +176,14 @@ Notice that we didn't need to use `trigger` here. This is because commands can h
 
 We can also make this event a bit more specific. Let's say we want to give the player regeneration when they eat rotten flesh, to encourage cannibalism. We can use this, instead:
 
-```bash
+```ruby
 on consume of rotten flesh:
     # code here
 ```
 
 Now it'll only trigger when someone eats rotten flesh, rather then when they eat any item. Note that this is nearly identical to using an if statement at the start of the event:
 
-```bash
+```ruby
 on consume:
     if event-item is rotten flesh:
         # code here
@@ -164,7 +191,7 @@ on consume:
 
 Let's use the first one, it's cleaner and actually runs slightly better. Anyway, we need to give the player regeneration. You probably already know about `/effect give`, and we could use that if we wanted. But we should stick to Skript syntax as much as possible. After a quick search on the docs, we find the following:
 
-```bash
+```ruby
 apply swiftness 2 to the player
 
 
@@ -174,21 +201,21 @@ execute console command "/effect give %player% regeneration"
 
 Pretty simple. Let's just change that to `regeneration 1` and add it to our code. We'll also give it a duration of 5 seconds.
 
-```bash
+```ruby
 on consume of rotten flesh:
     apply regeneration 1 to the player for 5 seconds
 ```
 
 Perfect! Now we get regen while eating flesh. If you eat multiple in a row though, the effect's duration starts to stack. This may be something you want, and you can keep it like this. If you want the timer to never go above 5 seconds, though, you need to add `replacing the existing effect`
 
-```bash
+```ruby
 on consume of rotten flesh:
     apply regeneration 1 to the player for 5 seconds replacing the existing effect
 ```
 
 ### Conclusion
 
-Congrats on writing your first script! This was only a small part of what you can do with Skript, but I hope it helped you get your feet wet. To learn more, check out the [Core Concepts](<../README (1).md>) pages for more in-depth tutorials. You should also become familiar with the official docs, or with SkriptHub docs if you prefer those. They'll help you tremendously.&#x20;
+Congrats on writing your first script! This was only a small part of what you can do with Skript, but I hope it helped you get your feet wet. To learn more, check out the [Core Concepts](broken-reference) pages for more in-depth tutorials. You should also become familiar with the official docs, or with SkriptHub docs if you prefer those. They'll help you tremendously.&#x20;
 
 If you had trouble following along, or didn't like this tutorial for some reason, please either message me on Discord at Sovde#0001, or open an issue on the github repository for this site.
 
