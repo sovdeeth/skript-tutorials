@@ -1,6 +1,10 @@
 # Table of contents
 
-* [Core Concepts](README.md)
+* [Introduction](README.md)
+  * [Installation](introduction/installation.md)
+  * [The Basics](introduction/the-basics.md)
+  * [Useful Resources](introduction/useful-resources.md)
+* [Core Concepts](<README (1).md>)
   * [Indentation](core-concepts/indentation.md)
   * [Variables](core-concepts/variables/README.md)
     * [Global and Local](core-concepts/variables/global-and-local.md)
