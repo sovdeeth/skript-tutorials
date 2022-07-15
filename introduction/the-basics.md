@@ -76,7 +76,9 @@ command /food:
 
 Technically, we could just write `send "You received some food!"` and Skript would know who we meant to send it to, but it's good practice to be explicit in what you're doing when writing code.
 
-Note that all the text we want to send is surrounded by `"`. Text that's just text, and isn't part of the actual code is referred to as a `string` in programming terminology. In Skript you'll hear it referred to as `text` and `string` interchangeably. Surrounding the text with `"` is important because it tells Skript that the stuff inside isn't code, it's just some text that shouldn't really be bothered with.
+#### Note on Using Text in Skript
+
+Notice that all the text we want to send is surrounded by `"`. Surrounding the text with `"` is important because it tells Skript that the stuff inside isn't code, it's just some text that shouldn't really be bothered with. Text that's just text and isn't part of the actual code is referred to as a `string` in programming terminology. In Skript you'll hear it referred to as `text` and `string` interchangeably.&#x20;
 
 Note that there are some rules surrounding text that might be confusing at first. If you want to use `"`, `#`, or `%` in a string, you have to type two of them in a row. This is because Skript uses these symbols for important things, and typing two in a row tells Skript to just treat it as one, normal, non-code character.
 
@@ -97,6 +99,8 @@ send "5 + 10 = %5 + 10%" to player
 # 5 + 10 = 15
 # to the player
 ```
+
+You can read more about the things you can and can't do with strings [here](../core-concepts/text.md).
 
 ### If/Else
 
@@ -171,7 +175,7 @@ command /food:
         send "You receieved %{_item}%!" to player
 ```
 
-The `%%` tell Skript to pay attention and read the stuff inside as code instead of just as text. This means we can just put `{_item}` in there and "2 steaks" or "2 golden apples" will automatically be sent to the player. `%%` can also be used in variable names, like`{variable::%player's uuid}`, which is a good way to make global variables specific to one player.
+The `%%` tell Skript to pay attention and read the stuff inside as code instead of just as text. This means we can just put `{_item}` in there and "2 steaks" or "2 golden apples" will automatically be sent to the player. `%%` can also be used in variable names, like`{variable::%player's uuid}`, which is a good way to make global variables specific to one player. Global and local variables are explained [here](../core-concepts/variables/global-and-local.md).
 
 However, %% should only ever be used in those two situations: inside a string, or inside a variable. You should not be using it outside of that.&#x20;
 
