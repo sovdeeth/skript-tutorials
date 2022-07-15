@@ -76,6 +76,28 @@ command /food:
 
 Technically, we could just write `send "You received some food!"` and Skript would know who we meant to send it to, but it's good practice to be explicit in what you're doing when writing code.
 
+Note that all the text we want to send is surrounded by `"`. Text that's just text, and isn't part of the actual code is referred to as a `string` in programming terminology. In Skript you'll hear it referred to as `text` and `string` interchangeably. Surrounding the text with `"` is important because it tells Skript that the stuff inside isn't code, it's just some text that shouldn't really be bothered with.
+
+Note that there are some rules surrounding text that might be confusing at first. If you want to use `"`, `#`, or `%` in a string, you have to type two of them in a row. This is because Skript uses these symbols for important things, and typing two in a row tells Skript to just treat it as one, normal, non-code character.
+
+```tcl
+send "this is a ""test"" of percent signs (%%) and hash tags (##)" to player
+
+# this sends: 
+# this is a "test" of percent signs (%) and hash tags (#)
+# to the player
+```
+
+You might encounter strings with code inside them, surrounded by `%` signs. This will be explained a little later in this tutorial, but it's basically just telling Skript that there's actually some code to run here, and the result of that code will end up in the string.
+
+```bash
+send "5 + 10 = %5 + 10%" to player
+
+# this sends:
+# 5 + 10 = 15
+# to the player
+```
+
 ### If/Else
 
 Now let's get fancy and make it so operators get golden apples instead. We can check whether a player is an op with the following condition:
