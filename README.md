@@ -10,4 +10,6 @@ For those of you who are already familiar with Skript, go ahead and use the navi
 
 ### Completed Pages
 
+* [Installation](introduction/installation.md)
+* [The Basics](introduction/the-basics.md)
 * [Custom Commands](core-concepts/commands.md)
