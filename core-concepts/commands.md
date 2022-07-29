@@ -97,6 +97,23 @@ command /kill <entity types> [in [the] radius <number = 20>]:
 command /broadcast [<text input:text="default text">]:
     trigger:
         broadcast {_text input}
+        
+# Using optional commands for flags
+# eg: 
+# /give-item stone sword with name Sword in the Stone and with lore Haha, get it?
+# or
+# /give-item heart of the sea with lore &bA murky blue orb.
+command /give-item <item> [with name <text>] [[and] with lore <text>]:
+    trigger:
+        set {_item} to arg-1
+        # set name
+        if arg-2 is set:
+            set name of {_item} to formatted arg-2
+        # set lore
+        if arg-3 is set:
+            set lore of {_item} to formatted arg-3
+        # give item
+        give player {_item}
 ```
 
 ### Executable by

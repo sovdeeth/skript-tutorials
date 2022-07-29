@@ -1,3 +1,3 @@
 # Variables
 
-this one is just a basic overview / intro
+Variables are a key component in any useful programming language, and Skript is no exception
