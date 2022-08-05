@@ -60,7 +60,9 @@ You can make arguments optional by surrounding them with square brackets `[]`, l
 However, the real power in arguments comes from type arguments. These allow a command to take in a [type](https://www.sovdee.com/classes.html), like `command /kill <player>`. Type arguments must be surrounded by angle brackets `<>` and can also be made optional by surrounding them with square brackets: `[<player>]`.\
 The argument can then be referenced in the trigger section by `arg-1` or `argument 1` or a [number of other ways](https://www.sovdee.com/expressions.html#ExprArgument). You can also name type variables like so: `<name:type>`, which can then be refenced as a local variable: `{_name}`. Here's the full pattern for arguments:
 
-\<name:type=%default value%>
+```
+<name:type=%default value%>
+```
 
 Arguments can be used in a lot of different ways, so I'll provide some examples ranging from the simplest possible to more complex uses.
 

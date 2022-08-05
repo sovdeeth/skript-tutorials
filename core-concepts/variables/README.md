@@ -16,7 +16,7 @@ set {hey, what's going on} to "not much, what about you?"
 
 Variables can have nearly any name you like. They have have spaces, dashes, symbols, whatever. You can put the whole Bee Movie script into a variable name, if you so choose. There are a few special ways to name variables though.&#x20;
 
-By default, variables are `global`, which means they can be seen and changed by any part of your script. Often we want variables to exist only in a small section of script, which is achieved by `local` variables, with begin with `_`, like `{_variable}`. We'll get further into this difference in the [Global and Local page](global-and-local.md).&#x20;
+By default, variables are `global`, which means they can be seen and changed by any part of your script. Often we want variables to exist only in a small section of script, which is achieved by `local` variables, with begin with `_`, like `{_variable}`. We'll get further into this difference in the [Global and Local page](global-and-local.md).
 
 ### Using Variables
 
@@ -62,7 +62,7 @@ Perfect, right? We save the player's location to a variable, and then when they 
 
 Well, this is only partially correct. You see, since global variables are, in fact, global, there's only one of them at any time. So if someone else comes along and does `/sethome`, the `{home}` variable now has their home location, and if you use `/home`, you're getting teleported to their home instead!
 
-To solve this, we need to make the variable unique for each player. The best method to do this is to use the player's uuid as part of the variable name. If you use just `player` or `player's name`, you run the risk of the data no longer being useful when the player changes their name. This is why it's always recommended to use uuids, or enable the config option `use player UUIDs in variable names`, which is explained [here](../../auxiliary-guides/useful-config-options.md).
+To solve this, we need to make the variable unique for each player. The best method to do this is to use the player's uuid as part of the variable name.
 
 ```tcl
 command /sethome:
