@@ -55,14 +55,14 @@ command //set!:
 
 ### Arguments
 
-[Arguments](https://www.sovdee.com/expressions.html#ExprArgument) follow the command name, and are separated by spaces.\
+[Arguments](https://docs.skriptlang.org/expressions.html#ExprArgument) follow the command name, and are separated by spaces.\
 You can make arguments optional by surrounding them with square brackets `[]`, like this: `command /kill [all entities]`.
 
 \
-However, the real power in arguments comes from type arguments. These allow a command to take in a [type](https://www.sovdee.com/classes.html), like `command /kill <player>`. Type arguments must be surrounded by angle brackets `<>` and can also be made optional by surrounding them with square brackets: `[<player>]`.
+However, the real power in arguments comes from type arguments. These allow a command to take in a [type](https://docs.skriptlang.org/classes.html), like `command /kill <player>`. Type arguments must be surrounded by angle brackets `<>` and can also be made optional by surrounding them with square brackets: `[<player>]`.
 
 \
-The argument can then be referenced in the trigger section by `arg-1` or `argument 1` or a [number of other ways](https://www.sovdee.com/expressions.html#ExprArgument). You can also name type variables like so: `<name:type>`, which can then be referenced as a local variable: `{_name}`. Here's the full pattern for arguments:
+The argument can then be referenced in the trigger section by `arg-1` or `argument 1` or a [number of other ways](https://docs.skriptlang.org/expressions.html#ExprArgument). You can also name type variables like so: `<name:type>`, which can then be referenced as a local variable: `{_name}`. Here's the full pattern for arguments:
 
 ```
 <name:type=%default value%>
@@ -164,7 +164,7 @@ command /shutdown:
 
 ### Cooldowns
 
-This field takes a timespan that the player must wait out before executing the command again. The cooldown can be canceled with `cancel the cooldown` ([documentation here](https://www.sovdee.com/effects.html#EffCancelCooldown)). Like with the permissions, you can change the default cooldown message with the `cooldown message:` field. The remaining time of the cooldown can be displayed with `%remaining time%` Additionally, you can store the cooldown in a variable with `cooldown storage:`, in order to store the cooldown even when the server restarts.
+This field takes a timespan that the player must wait out before executing the command again. The cooldown can be canceled with `cancel the cooldown` ([documentation here](https://docs.skriptlang.org/effects.html#EffCancelCooldown)). Like with the permissions, you can change the default cooldown message with the `cooldown message:` field. The remaining time of the cooldown can be displayed with `%remaining time%` Additionally, you can store the cooldown in a variable with `cooldown storage:`, in order to store the cooldown even when the server restarts.
 
 ```tcl
 command /vote:
