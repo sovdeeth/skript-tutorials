@@ -26,6 +26,7 @@
   * [Events](syntax-types/events.md)
   * [Conditions](syntax-types/conditions.md)
   * [Effects](syntax-types/effects.md)
+  * [Literals and Aliases](syntax-types/literals-and-aliases.md)
   * [Expressions](syntax-types/expressions.md)
   * [Sections](syntax-types/sections.md)
 * [Auxiliary Guides](auxiliary-guides/README.md)
