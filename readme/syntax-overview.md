@@ -37,7 +37,7 @@ Effects are as their name suggests. They **effect change** on things, like a ver
 
 Note that you can only have **one** effect on each line. There is no way to have any line with more than one effect.
 
-Think of most Effects like a jigsaw puzzle with a few pieces missing (some already have all the pieces they need, but that's rare). The docs tell you what pieces are already there (`send`, `to`) and what the shape of the missing pieces looks like (`objects`, `players/console`). It's in the filling in of these missing pieces where Expressions come into play.
+Think of most Effects like a jigsaw puzzle with a few pieces missing (some already have all the pieces they need, but that's rare). The docs tell you what pieces are already there (`send`, `to`) and what the shape of the missing pieces looks like (`objects`, `players/console`). These are **types**, and they tell you what you can and can't put in the blanks. Anything can go into an `object` slot, but text can't go into a `player` slot. If the type is plural, it means you can put multiple things into that slot, like a list.
 
 #### Expressions
 
