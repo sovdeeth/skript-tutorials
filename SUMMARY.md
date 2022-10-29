@@ -6,7 +6,7 @@
   * [Syntax Overview](readme/syntax-overview.md)
   * [Useful Resources](introduction/useful-resources.md)
 * [Core Concepts](core-concepts/README.md)
-  * [Indentation](core-concepts/indentation.md)
+  * [Indentation and Program Flow](core-concepts/indentation.md)
   * [Variables](core-concepts/variables/README.md)
     * [Global and Local](core-concepts/variables/global-and-local.md)
     * [List Basics](core-concepts/variables/list-basics.md)

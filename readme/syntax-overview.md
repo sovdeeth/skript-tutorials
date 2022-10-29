@@ -5,9 +5,10 @@ Syntax is a word that means the set or rules or conventions that define a langua
 Skript has a few main types of syntaxes:
 
 * Top-level syntaxes like events, commands, function definitions, and the option and variables sections.
-* Other syntaxes, like effects, expressions, types, function calls, variables, and anything else you'd use in normal code.
+* Sections and conditions, syntaxes that require some indentation.
+* Effects, expressions, literals and similar syntaxes that make up the fundamental bits of a line of Skript code.
 
-### Top-Level Syntaxes
+## Top-Level Syntaxes
 
 Top level syntaxes are things you would write to start out a script:
 
@@ -27,11 +28,11 @@ function name(p: player) :: text:
 
 You don't need to know exactly how to use all of these, they'll be explained in greater detail later. **The important part is that none of them are indented.** All top-level syntaxes are just that, top-level. They're never indented. They contain every other bit of code inside of them. If you ever get the error `"All code must be put inside an event"`, you've encountered this principle.
 
-### Other Syntaxes
+## Fundamental Syntaxes
 
 Top-level syntaxes are pretty straightforward, just write an event, or a command, or whatever. Everything else is a little more complicated, but we'll break it down to the simple bits. The basic structure of a line of Skript code consists of two main elements: Effects and Expressions.
 
-#### Effects
+### Effects
 
 Effects are as their name suggests. They **effect change** on things, like a verb. In fact, nearly every effect is the verb of the "sentence" it creates. If you look at the Skript documentation you'll see the Effect tab and all the possible syntaxes you can use. Things like `teleport %entities% to %location%`, or `send %objects% to %players/console%`.&#x20;
 
@@ -39,7 +40,7 @@ Note that you can only have **one** effect on each line. There is no way to have
 
 Think of most Effects like a jigsaw puzzle with a few pieces missing (some already have all the pieces they need, but that's rare). The docs tell you what pieces are already there (`send`, `to`) and what the shape of the missing pieces looks like (`objects`, `players/console`). These are **types**, and they tell you what you can and can't put in the blanks. Anything can go into an `object` slot, but text can't go into a `player` slot. If the type is plural, it means you can put multiple things into that slot, like a list.
 
-#### Expressions
+### Expressions
 
 We just went over the basics of Effects and we found that we need to fill in some blanks. What do we put in place of `objects`, in place of `players/console`? This is what Expressions do.&#x20;
 
@@ -60,7 +61,7 @@ the name of %item%
 the block at %location%
 ```
 
-We should also briefly touch on Literals and Aliases, which are fancy names for pretty simple concepts. Literals are just the literal value of something, written out. For example, `"Hello"` is a text literal: It's text, and it's written out literally. It's not created through some expression, like `join "he" and "llo"`. Likewise, any number you write out is a literal, and same with writing out entity types like `creeper` or `skeleton`.&#x20;
+We should also briefly touch on Literals and Aliases, which are fancy names for pretty simple concepts. Literals are just the literal value of something, written out. For example, `"Hello"` is a text literal: It's text, and it's written out literally. It's not created through some expression, like `join "he" and "llo"` or `"the answer is %10 + 5%"`. Likewise, any number you write out is a literal, and same with writing out entity types like `creeper` or `skeleton`.&#x20;
 
 Aliases are similar, but mainly for items. Aliases make it easier to write out item names, because Minecraft items aren't always named well behind the scenes. Some examples of aliases include: `diamond sword`, `oak leaves`, and (surprisingly) `netherite chestplate of unbreaking 3`. That last one is a little out of place, but it's good to remember that when you're making enchanted objects like that, the enchantments have to come immediately after the name of the item.
 
@@ -121,8 +122,52 @@ Likewise for the player's tool. It's the simple expression `player` put into a c
 
 Then we can take all of these values, put them into a text, and send it off to all the players on the server.
 
+### Conditions
+
+Conditions are what you think of as **if statements**. Conditions can compare two things or they can just look at a property of something, like `if player is alive:`. We call this second kind of condition a _property condition_, and they tend to be simpler to use than other conditions.
+
+Conditions don't technically have to be part of an if statement, but it's rare that you see them outside of that usage. Conditions can be written on their own, where they act as gatekeepers for your code. If they don't pass (i.e. they are false), then the code after won't run. This is generally called an _inline condition_. I'll put some examples below:
+
+```bash
+# a normal if statement using a condition:
+if level of player >= 5:
+    broadcast "yay!"
+
+# an inline if statement
+level of player >= 5
+broadcast "yay!"
+
+# an exotic use: "do if" statement
+broadcast "yay!" if level of player >= 5
+
+# another slightly exotic use: a ternary operator
+broadcast "yay!" if level of player >= 5 else "aww."
+```
+
+If you want to learn more about these various uses, check out [Indentation and Program Flow](../core-concepts/indentation.md).
+
+### Sections
+
+Notice that in the first example above, we had to use a colon (`:`) and indent the next line of code. When this happens, we call it a _section_. Sections are smaller, well, sections of your whole program. In the code below, notice how we have two levels of indentation, and thus two sections.
+
+```ruby
+if player's health >= 5:
+    spawn a zombie at player:
+        set the zombie's helmet to an iron helmet
+        set the zombie's display name to "BOO!"
+    send "BOO!" to the player
+```
+
+Our first section is the if statement. If the player's health is less than 5, we just skip the entire section of code and move on. However, if it's greater or equal to 5, we'll go into that section.
+
+We then have the spawn section. This section is pretty neat, because it allows you to modify the entity that you're spawning before it officially spawns. It has the special property of being able to refer to the spawning entity with the word `entity` or in this case, `zombie`. No need for `last spawned entity`.&#x20;
+
+After we finish running the spawn section, we'll pop back out to the if statement's section and finish running the `send` effect. That's the last bit of code, so we stop there.
+
 ### Conclusion
 
-I want to stress that you do not need to do this kind of analysis when you're writing code. It's good to know how effects and expressions work together and how you can combine them to make bigger things happen. However, most of your code writing should just be taking things from the docs and putting them together to make it work. You don't need to stress about what's a literal, what's an alias, etc. Just know how to fit expressions into effects and you're pretty much golden.
+I hope this has giving you a bit more grounding in the terms and meaning behind how Skript's syntaxes work and how they're named and categorized.&#x20;
+
+I want to stress that you do not need to do this kind of analysis when you're writing code. It's good to know how different syntactic elements work together and how you can combine them to make bigger things happen. However, most of your code writing should just be taking things from the docs and putting them together to make it work. You don't need to stress about what's a literal, what's an alias, etc. Just know that effects are different from expressions and that conditions go in if statements, and you're pretty much golden.
 
 If you are curious about the more advanced technicalities in how Skript works, you can read the pages in Syntax Types.
