@@ -108,7 +108,7 @@ command kit <text> [<text>] [<player>]:
 
 Note that we didn't just broadcast the same thing every time, we also broadcasted something important, the arguments or the unlocked kits. Now it'll tell us where it stops working, and it'll also help us know exactly what the values of our arguments are. When we run the command, we get this output:
 
-<pre class="language-bash"><code class="lang-bash"><strong>[21:15:15 INFO]: /kit give Ultra Sahvde
+<pre class="language-bash"><code class="lang-bash"><strong>[21:15:15 INFO]: /kit give Ultra Dinnerbone
 </strong>[21:15:15 INFO]: give
 [21:15:15 INFO]: Ultra</code></pre>
 
