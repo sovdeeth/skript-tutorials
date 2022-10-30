@@ -8,6 +8,31 @@ Skript has a few main types of syntaxes:
 * Sections and conditions, syntaxes that require some indentation.
 * Effects, expressions, literals and similar syntaxes that make up the fundamental bits of a line of Skript code.
 
+I will warn you, this is a very long page. Feel free to use the right-side bar to skip the the sections you are most interested in.
+
+## Crash Course in Reading Syntax
+
+You may have looked at the Skript docs and been very confused on how to turn that long string of words and symbols into actual code. The docs can be a bit daunting if you don't know the rules for how to read them. Here's a little crash course, but if you want more detail, head over to [Reading Syntax](../syntax-types/reading-syntax.md).
+
+```bash
+(message|send [message[s]]) %objects% [to %players/console%] [from %player%]
+```
+
+The Send effect, seen above, is a pretty ubiquitous syntax in Skript, so we'll use it as our example. The first thing to recognize are the square brackets `[]`. These denote optional syntax, things you don't have to include if you don't want to. We can omit the `[to %players/console%] [from %player%]` section entirely and still have it work.
+
+The second big thing are the parts where you can choose one or another. These look like `(choice 1|choice 2)`. You can use choice 1 or choice 2, but not both. In the Send effect, this means we can either use `message` or `send [message[s]]`, but not both together.
+
+Finally, note the use of `%`. Anything enclosed in percent signs denotes some blank spot left for us to fill in. Here, `%objects%` means we can put whatever kind of information we want there. `%player%` means we need to put a player there, and `%players/console%` means we can put multiple players and/or the console in that spot. Let's see a few ways we could write the syntax out:
+
+```bash
+message "test" to player
+send message "Hey there!" to player and console
+send {_a} and {_b} and "c" to all players
+message {_something} to player from {_another player} 
+```
+
+Hopefully this helps you see how the syntax in the docs can be turned into actual Skript code.
+
 ## Top-Level Syntaxes
 
 Top level syntaxes are things you would write to start out a script:
@@ -122,6 +147,8 @@ Likewise for the player's tool. It's the simple expression `player` put into a c
 
 Then we can take all of these values, put them into a text, and send it off to all the players on the server.
 
+## Conditions and Sections
+
 ### Conditions
 
 Conditions are what you think of as **if statements**. Conditions can compare two things or they can just look at a property of something, like `if player is alive:`. We call this second kind of condition a _property condition_, and they tend to be simpler to use than other conditions.
@@ -144,7 +171,7 @@ broadcast "yay!" if level of player >= 5
 broadcast "yay!" if level of player >= 5 else "aww."
 ```
 
-If you want to learn more about these various uses, check out [Indentation and Program Flow](../core-concepts/indentation.md).
+If you want to learn more about these various uses, check out [Conditionals](../core-concepts/indentation/conditionals.md).
 
 ### Sections
 
@@ -164,7 +191,7 @@ We then have the spawn section. This section is pretty neat, because it allows y
 
 After we finish running the spawn section, we'll pop back out to the if statement's section and finish running the `send` effect. That's the last bit of code, so we stop there.
 
-### Conclusion
+## Conclusion
 
 I hope this has giving you a bit more grounding in the terms and meaning behind how Skript's syntaxes work and how they're named and categorized.&#x20;
 

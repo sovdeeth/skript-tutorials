@@ -21,7 +21,7 @@ command /food:
 
 So we have two lines so far, the first one telling Skript that we're making a new command, and that it's named `/food`. The lines with `#` are comments and are just there for explanation; they don't affect the code. Now we need to tell Skript what the command does, which is what `trigger` does. There are other things that commands can have, which you can look at the core concepts page for.&#x20;
 
-You might also notice we've indented the `trigger:`. This is a really important concept in Skript. Indenting tells Skript what belongs to what. Everything indented after the `command` line belongs to that command, and if you un-indent, Skript thinks it is going to be something else. **The basic rule of thumb is to indent every time you see a colon (`:`)**, but there's more information on indentation [here](../core-concepts/indentation.md).
+You might also notice we've indented the `trigger:`. This is a really important concept in Skript. Indenting tells Skript what belongs to what. Everything indented after the `command` line belongs to that command, and if you un-indent, Skript thinks it is going to be something else. **The basic rule of thumb is to indent every time you see a colon (`:`)**, but there's more information on indentation [here](../core-concepts/indentation/).
 
 So trigger is responsible for holding all the code that runs when the command is called by a player. Let's add a line that fills up a player's hunger bar. We can consult the docs for this one. Head to [https://docs.skriptlang.org/](https://docs.skriptlang.org/), click on `Expressions`,  and search for "Food" or "Hunger".&#x20;
 
