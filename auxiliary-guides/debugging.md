@@ -1,6 +1,6 @@
 # Debugging
 
-Debugging is a vital skill to learn for any programmer. Your code will break, there will be bugs, and you will not understand how to fix it without debugging. Knowing how to debug well will save you hours, as well as save the time of anyone you're asking for help. This page also includes a list of [common mishaps and points of confusion](debugging.md#undefined) at the bottom, so you know what to avoid doing.
+Debugging is a vital skill to learn for any programmer. Your code will break, there will be bugs, and you will not understand how to fix it without debugging. Knowing how to debug well will save you hours, as well as save the time of anyone you're asking for help. You should also visit the [SkUnity wiki page on debugging](https://forums.skunity.com/wiki/debug/), it has a lot of useful examples, tips and tricks, and other resources.
 
 Debugging is a catch-all term for the process of figuring out what is causing an error or a bug and fixing it, hence the name. Modern IDEs for larger programming languages have really cool and fancy debugging tools built in, but us Skripters have to deal with manual debugging. Here are the main strategies:
 
@@ -34,17 +34,17 @@ Firstly, this is a lot easier to read. We can even see how the lore gets laid ou
 This narrows things down. Some of you may have spotted the error by now, which is good! You can fix it and stop debugging at this point. If you haven't, we can keep going.
 
 ```bash
-    set {_item} to a golden shovel named "&bHello &cWorld!"
-    enchant {_item} with unbreaking 5
-    set {_lore::1} to "Remaining usages: &c%{_usages}%"
-    set {_lore::2} to "&7Click to use!"
-    set {_lore::3} to ""
-    set {_lore::4} to "To use this item, right click on a block."
-    set {_lore::5} to "&7You currently have %{_usages}% usages"
-    set {_lore::6} to ""
-    set {_lore::7} to ""
-    set {_lore::8} to "Price: &c$%{_price}%"
-    set lore of {_item} to {_lore::*}
+set {_item} to a golden shovel named "&bHello &cWorld!"
+enchant {_item} with unbreaking 5
+set {_lore::1} to "Remaining usages: &c%{_usages}%"
+set {_lore::2} to "&7Click to use!"
+set {_lore::3} to ""
+set {_lore::4} to "To use this item, right click on a block."
+set {_lore::5} to "&7You currently have %{_usages}% usages"
+set {_lore::6} to ""
+set {_lore::7} to ""
+set {_lore::8} to "Price: &c$%{_price}%"
+set lore of {_item} to {_lore::*}
 ```
 
 Now we don't get any errors, so the problem must have come from the enchantments. It looked fine though, we were using unbreaking 5, didn't have spelling errors, so what was the problem? Let's check the docs. [https://docs.skriptlang.org/classes.html#itemtype](https://docs.skriptlang.org/classes.html#itemtype)
@@ -52,16 +52,16 @@ Now we don't get any errors, so the problem must have come from the enchantments
 You will notice that the enchantments are supposed to come directly after the item alias, so we should have written the following:
 
 ```tcl
-    set {_item} to a golden shovel of unbreaking 5 named "&bHello &cWorld!"
-    set {_lore::1} to "Remaining usages: &c%{_usages}%"
-    set {_lore::2} to "&7Click to use!"
-    set {_lore::3} to ""
-    set {_lore::4} to "To use this item, right click on a block."
-    set {_lore::5} to "&7You currently have %{_usages}% usages"
-    set {_lore::6} to ""
-    set {_lore::7} to ""
-    set {_lore::8} to "Price: &c$%{_price}%"
-    set lore of {_item} to {_lore::*}
+set {_item} to a golden shovel of unbreaking 5 named "&bHello &cWorld!"
+set {_lore::1} to "Remaining usages: &c%{_usages}%"
+set {_lore::2} to "&7Click to use!"
+set {_lore::3} to ""
+set {_lore::4} to "To use this item, right click on a block."
+set {_lore::5} to "&7You currently have %{_usages}% usages"
+set {_lore::6} to ""
+set {_lore::7} to ""
+set {_lore::8} to "Price: &c$%{_price}%"
+set lore of {_item} to {_lore::*}
 ```
 
 And voila, it works! This is the essence of debugging, narrowing down the problem until you've found the culprit, and then figuring out how to fix it. Let's move on to another common situation.
