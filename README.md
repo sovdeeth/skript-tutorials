@@ -13,7 +13,7 @@ For those of you who are already familiar with Skript, go ahead and use the navi
 * [Installation](introduction/installation.md)
 * [The Basics](introduction/the-basics.md)
 * [Syntax Overview](readme/syntax-overview.md)
-* [Debugging](readme/debugging.md)
+* [Debugging](auxiliary-guides/debugging.md)
 * [Useful Resources](introduction/useful-resources.md)
 * [Custom Commands](core-concepts/commands.md)
 * [Variables](core-concepts/variables/) and [Global and Local](core-concepts/variables/global-and-local.md)

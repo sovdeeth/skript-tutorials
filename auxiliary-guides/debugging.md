@@ -9,7 +9,7 @@ Debugging is a catch-all term for the process of figuring out what is causing an
 Skript's error system is pretty helpful, most of the time. However, it can get confused when there's a lot of stuff going on in a single line. Plus, it doesn't often tell you what part of the line is the problem, just that the whole line has some sort of error. For example, the following line returns an error: `can't understand this condition/effect`.&#x20;
 
 ```tcl
-    set {_item} to a golden shovel named "&bHello &cWorld!" of unbreaking 5 with lore "Remaining usages: &c%{_usages}%", "&7Click to use!", "", "To use this item, right click on a block.", "&7You currently have %{_usages}% usages", "", "", "Price: &c$%{_price}%"
+set {_item} to a golden shovel named "&bHello &cWorld!" of unbreaking 5 with lore "Remaining usages: &c%{_usages}%", "&7Click to use!", "", "To use this item, right click on a block.", "&7You currently have %{_usages}% usages", "", "", "Price: &c$%{_price}%"
 ```
 
 It's probably hard to read with all the scrolling, but think of that as just another downside of long lines. There's something wrong with it, but we have no clue what. The syntax looks fine at first glace, there's no glaring errors like misspellings. Maybe it's the quotation marks. Maybe we missed a comma somewhere. Maybe golden shovel isn't the right alias. Who knows?
@@ -17,16 +17,16 @@ It's probably hard to read with all the scrolling, but think of that as just ano
 We can go above figuring this out in two ways. First, we could just remove parts of the line until it no longer errors, and we've found our culprit. This is fine, but it means you'll still have a long line at the end of it. A more sustainable approach is to split this over multiple lines, like so:
 
 ```tcl
-    set {_item} to a golden shovel named "&bHello &cWorld!" of unbreaking 5 
-    set {_lore::1} to "Remaining usages: &c%{_usages}%"
-    set {_lore::2} to "&7Click to use!"
-    set {_lore::3} to ""
-    set {_lore::4} to "To use this item, right click on a block."
-    set {_lore::5} to "&7You currently have %{_usages}% usages"
-    set {_lore::6} to ""
-    set {_lore::7} to ""
-    set {_lore::8} to "Price: &c$%{_price}%"
-    set lore of {_item} to {_lore::*}
+set {_item} to a golden shovel named "&bHello &cWorld!" of unbreaking 5 
+set {_lore::1} to "Remaining usages: &c%{_usages}%"
+set {_lore::2} to "&7Click to use!"
+set {_lore::3} to ""
+set {_lore::4} to "To use this item, right click on a block."
+set {_lore::5} to "&7You currently have %{_usages}% usages"
+set {_lore::6} to ""
+set {_lore::7} to ""
+set {_lore::8} to "Price: &c$%{_price}%"
+set lore of {_item} to {_lore::*}
 ```
 
 Firstly, this is a lot easier to read. We can even see how the lore gets laid out on the item now. But we also know now that the error is in just the first line, because Skript now tells us that it `Can't understand this expression: 'a golden shovel named "&bHello &cWorld!" of unbreaking 5`.&#x20;

@@ -4,7 +4,7 @@
   * [Installation](introduction/installation.md)
   * [The Basics](introduction/the-basics.md)
   * [Syntax Overview](readme/syntax-overview.md)
-  * [Debugging](readme/debugging.md)
+  * [Debugging](auxiliary-guides/debugging.md)
   * [Useful Resources](introduction/useful-resources.md)
 * [Core Concepts](core-concepts/README.md)
   * [Indentation and Program Flow](core-concepts/indentation/README.md)
