@@ -10,9 +10,14 @@ For those of you who are already familiar with Skript, go ahead and use the navi
 
 ### Completed Pages
 
-* [Installation](introduction/installation.md)
-* [The Basics](introduction/the-basics.md)
-* [Syntax Overview](readme/syntax-overview.md)
-* [Useful Resources](introduction/useful-resources.md)
+* [Introduction](./)
+  * [Installation](introduction/installation.md)
+  * [The Basics](introduction/the-basics.md)
+  * [Syntax Overview](readme/syntax-overview.md)
+  * [Debugging](auxiliary-guides/debugging.md)
+  * [Useful Resources](introduction/useful-resources.md)
+* [Variables](core-concepts/variables/)
+  * [Global and Local](core-concepts/variables/global-and-local.md)
+  * [List Basics](core-concepts/variables/list-basics.md)
 * [Custom Commands](core-concepts/commands.md)
-* Some of [Variables](core-concepts/variables/)
+
