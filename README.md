@@ -19,5 +19,6 @@ For those of you who are already familiar with Skript, go ahead and use the navi
 * [Variables](core-concepts/variables/)
   * [Global and Local](core-concepts/variables/global-and-local.md)
   * [List Basics](core-concepts/variables/list-basics.md)
+  * [Options and the Variables Section](core-concepts/variables/options-and-the-variables-section.md)
 * [Custom Commands](core-concepts/commands.md)
 
