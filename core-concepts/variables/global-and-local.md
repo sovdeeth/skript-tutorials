@@ -45,6 +45,32 @@ command /particles:
             wait 1 tick
 ```
 
+Global variables can also be extremely useful, even if they need to be unique. As shown earlier, global variables can be used as flags to pass infomation over time, or from one command/event to another:
+
+```bash
+command /stop-loop:
+    trigger:
+        set {stop-loop} to true
+
+# running the /stop-loop command can stop this loop, despite being a different trigger.   
+on load:
+    while {stop-loop} is not set:
+        broadcast "ping"
+        wait 1 second
+```
+
+They're also great for holding onto information over longer periods of time, like data attatched to a player:
+
+```tcl
+on join:
+    set {last-join::%player's uuid%} to now
+
+on quit:
+    add difference between {last-join::%player's uuid} and now to {playtime::%player%}
+```
+
+Note that we had to make sure the variables were uniquely named by using the player's uuid.
+
 ### When to Use Global vs Local
 
 Let's summarize. Local variables are great at storing data that we only need for a short time, in a specific place. We don't have to worry about using unique names, or resetting it to some starting value, or anything like that. **Local variables should be used whenever possible.**
