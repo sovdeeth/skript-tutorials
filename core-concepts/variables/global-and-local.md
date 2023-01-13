@@ -2,7 +2,7 @@
 
 Variables, as mentioned previously, have two main "scopes" they can have. They can be global, where any script, any file, any event or function or command can access them. Or, they can be local, where only the event/function/command that created them can access them.&#x20;
 
-```bash
+```applescript
 on load:
     set {a-global-variable} to "hello, world"
     set {_a-local-variable} to "Hey!"
@@ -23,7 +23,7 @@ As seen above, the global variable is the same no matter where it's accessed. Th
 
 Say you have an event that includes some sort of wait. Let's say, a command that draws particles for 5 seconds. If you were to use a global variable to store the location, you'd need to somehow make the name of the variable unique for every single time the command is called, otherwise the particles move somewhere else if the command is called again within the 5 seconds.&#x20;
 
-```bash
+```applescript
 # bad code:
 command /particles:
     trigger:
@@ -35,7 +35,7 @@ command /particles:
 
 However, if we use `{_location}`, a local variable, we don't have to worry about this. Each time the command is called, the location variable is only usable inside that instance of the command. This means each time the command is called, it has its own unique location stored without needing to have a unique variable name.
 
-```bash
+```applescript
 # good code:
 command /particles:
     trigger:
@@ -47,7 +47,7 @@ command /particles:
 
 Global variables can also be extremely useful, even if they need to be unique. As shown earlier, global variables can be used as flags to pass infomation over time, or from one command/event to another:
 
-```bash
+```applescript
 command /stop-loop:
     trigger:
         set {stop-loop} to true
@@ -61,7 +61,7 @@ on load:
 
 They're also great for holding onto information over longer periods of time, like data attatched to a player:
 
-```tcl
+```applescript
 on join:
     set {last-join::%player's uuid%} to now
 

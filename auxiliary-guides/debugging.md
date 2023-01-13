@@ -8,7 +8,7 @@ Debugging is a catch-all term for the process of figuring out what is causing an
 
 Skript's error system is pretty helpful, most of the time. However, it can get confused when there's a lot of stuff going on in a single line. Plus, it doesn't often tell you what part of the line is the problem, just that the whole line has some sort of error. For example, the following line returns an error: `can't understand this condition/effect`.&#x20;
 
-```tcl
+```applescript
 set {_item} to a golden shovel named "&bHello &cWorld!" of unbreaking 5 with lore "Remaining usages: &c%{_usages}%", "&7Click to use!", "", "To use this item, right click on a block.", "&7You currently have %{_usages}% usages", "", "", "Price: &c$%{_price}%"
 ```
 
@@ -16,7 +16,7 @@ It's probably hard to read with all the scrolling, but think of that as just ano
 
 We can go above figuring this out in two ways. First, we could just remove parts of the line until it no longer errors, and we've found our culprit. This is fine, but it means you'll still have a long line at the end of it. A more sustainable approach is to split this over multiple lines, like so:
 
-```tcl
+```applescript
 set {_item} to a golden shovel named "&bHello &cWorld!" of unbreaking 5 
 set {_lore::1} to "Remaining usages: &c%{_usages}%"
 set {_lore::2} to "&7Click to use!"
@@ -33,7 +33,7 @@ Firstly, this is a lot easier to read. We can even see how the lore gets laid ou
 
 This narrows things down. Some of you may have spotted the error by now, which is good! You can fix it and stop debugging at this point. If you haven't, we can keep going.
 
-```bash
+```applescript
 set {_item} to a golden shovel named "&bHello &cWorld!"
 enchant {_item} with unbreaking 5
 set {_lore::1} to "Remaining usages: &c%{_usages}%"
@@ -51,7 +51,7 @@ Now we don't get any errors, so the problem must have come from the enchantments
 
 You will notice that the enchantments are supposed to come directly after the item alias, so we should have written the following:
 
-```tcl
+```applescript
 set {_item} to a golden shovel of unbreaking 5 named "&bHello &cWorld!"
 set {_lore::1} to "Remaining usages: &c%{_usages}%"
 set {_lore::2} to "&7Click to use!"
@@ -73,7 +73,7 @@ Nearly every bit of code you write will have some sort of variable or if stateme
 Here we have a command that has a bunch of different possible uses. We'll be specifically looking at `/kit give Ultra Dinnerbone`, or giving the kit `Ultra` to `Dinnerbone`.
 
 {% code lineNumbers="true" %}
-```bash
+```applescript
 # A command to manage kits and give them to players
 command kit <text> [<text>] [<player>]:
     trigger:
@@ -90,7 +90,7 @@ The problem is, whenever we run the command, nothing happens! Obviously, somethi
 Our first strategy should be to find out where our code stops working. We can do this by putting broadcasts after every if statement to see which ones work:
 
 {% code lineNumbers="true" %}
-```bash
+```applescript
 # A command to manage kits and give them to players
 command kit <text> [<text>] [<player>]:
     trigger:
@@ -114,7 +114,7 @@ Note that we didn't just broadcast the same thing every time, we also broadcaste
 
 Ok, now we know that we never reach line 9, because `unlocked kits:` was never broadcast. This means we have a problem with Line 8.&#x20;
 
-```bash
+```applescript
 if {kits-unlocked::%player%::*} contains "Ultra": 
 ```
 

@@ -8,13 +8,13 @@ Conditions can take a few different forms in Skript, each of which will be outli
 
 Conditions in Skript are pretty straight forward: most things you may want to check have their own dedicated condition. Some others might not have a dedicated condition, and instead use a kind of  "generic" condition with an expression. For example, let's say that you wanted to check if a player is allowed to fly. You have two options:
 
-```tcl
+```applescript
 if player can fly
 ```
 
 or
 
-```tcl
+```applescript
 if player's fly mode is true
 ```
 
@@ -24,7 +24,7 @@ The first uses the dedicated condition in Skript (notice how it has no `is`, `=`
 
 Generic conditions are used when a dedicated condition does not exist or you have a more specific thing you check for. Things like `is / is not`, `= / !=`, `is between / is not between`, `> / <` are all generic, they just simply check two objects and can be used in the same way as normal:
 
-```tcl
+```applescript
 if player's balance < 20
 ```
 
@@ -34,7 +34,7 @@ You can see all of the various generic condition syntaxes [here, under the Compa
 
 The traditional way conditions are used is the following:
 
-```tcl
+```applescript
 if <condition>:
     send "hello"
     
@@ -51,7 +51,7 @@ If the condition does not pass, then the code inside the section will be skipped
 
 What if you want to check some other condition if your first condition fails? Say maybe your check for whether the player's y-coordinate is greater than 10 didn't pass, but now you want to check if it's less than -20. Then you can utilize an `else if`. It operates just like a normal `if`:
 
-```tcl
+```applescript
 if <condition>:
     send "hello"
 else if <other condition>:
@@ -70,7 +70,7 @@ Notice how the `else` is at the same indentation level as the top `if`. If the f
 
 If you need to perform a catch-all, perhaps when you don't know all the possible outputs or you just need to catch everything that does not pass, `else` comes in handy. It can either be applied after an `if` or after an `else if`:
 
-```tcl
+```applescript
 if <condition>:
     send "hello"
 else:
@@ -79,7 +79,7 @@ else:
 
 or
 
-```tcl
+```applescript
 if <condition>:
     send "hello"
 else if <other condition>:
@@ -98,7 +98,7 @@ else:
 
 As you can likely guess, the `else` will only fire if the previous condition(s) did not pass, it behaves as a catch-all. Keep in mind that since `else` are a catch-all, you **cannot** chain them like so:
 
-```tcl
+```applescript
 if <condition>:
     send "hello"
 else:
@@ -113,14 +113,14 @@ Inline ifs are a neat thing, but are generally discouraged as they make code har
 
 For example,
 
-```tcl
+```applescript
 if player is op:
     send "hello operator"
 ```
 
 can become
 
-```tcl
+```applescript
 player is op
 send "hello operator"
 ```
@@ -129,7 +129,7 @@ Note that inline ifs will skip all of the following code in their section. When 
 
 &#x20;Inline ifs also allows you to chain conditions without indenting, like the following:
 
-```tcl
+```applescript
 player is op
 player is flying
 player's gamemode is survival
@@ -144,7 +144,7 @@ As you can probably see, it can make code harder to read -especially if used oft
 
 The only purpose of the `do if` effect is to run an effect if a condition passes all in one line, an example being:
 
-```tcl
+```applescript
 send "hello" if distance between player and {spawn} <= 10
 ```
 
@@ -156,13 +156,13 @@ Keep note that there is no `else if` or `else` options with this method.
 
 Ternaries are similar to the `do if` effect, but they're expressions instead. They're designed to return one thing if a condition passes and a different thing if it does not pass. A simple but straight forward example looks something like:
 
-```tcl
+```applescript
 send "hello player" if player is not op, else "hello admin" 
 ```
 
 If it seems a bit hard to understand, let's highlight the expression itself:
 
-```tcl
+```applescript
 "hello player" if player is not op, else "hello admin" 
 ```
 
@@ -173,7 +173,7 @@ If they are not op (the condition fails), then return `hello admin`.
 
 Ternary can be used to return any object or sets of objects, not just limited to strings:
 
-```tcl
+```applescript
 <object> if <condition>, else <object>
 ```
 
@@ -181,7 +181,7 @@ Ternary can be used to return any object or sets of objects, not just limited to
 
 A quite common use case for ternaries in Skript is to toggle a boolean variable, ie if a variable is set to `true`, then set it to `false` and vise versa:
 
-```tcl
+```applescript
 set {myVariable} to true if {myVariable} is false, else false
 ```
 

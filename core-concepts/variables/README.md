@@ -8,7 +8,7 @@ At their core, variables are a label for information. If you've taken algebra in
 
 In Skript, variables are represented by a variable name contained within two curly braces, like so:
 
-```ruby
+```applescript
 set {variable} to 1
 set {_variable} to 2
 set {hey, what's going on} to "not much, what about you?"
@@ -22,7 +22,7 @@ By default, variables are `global`, which means they can be seen and changed by 
 
 Let's use a very simple example to start with. We have a command that does a small math equation and outputs the answer. However, we have a section of the equation that repeats a few times. Let's make it easier to deal with using variables.
 
-```ruby
+```applescript
 command /math <number>:
     trigger:
         # a basic quadratic equation
@@ -35,7 +35,7 @@ command /math <number>:
 
 &#x20;That's much easier to read! Plus, it means if we need {\_x} again later in the command, we have it ready to use, without having to retype it. And if we want to change `7` to `6`, we only have to change 1 number instead of 2 or more. Be careful with using too many variables, though. If overused, they can make code more cluttered and messy than necessary:
 
-```ruby
+```applescript
          # questionable overuse of variables
          set {_a} to 10
          set {_b} to 3
@@ -48,7 +48,7 @@ command /math <number>:
 
 Global variables in particular are great for storing and transferring data. Here we'll use a very basic `/home` command system to demonstrate.&#x20;
 
-```tcl
+```applescript
 command /sethome:
     trigger:
         set {home} to player's location
@@ -64,7 +64,7 @@ Well, this is only partially correct. You see, since global variables are, in fa
 
 To solve this, we need to make the variable unique for each player. The best method to do this is to use the player's uuid as part of the variable name. If you use just `player` or `player's name`, you run the risk of the data no longer being useful when the player changes their name. This is why it's always recommended to use uuids, or enable the config option `use player UUIDs in variable names`, which is explained [here](../../auxiliary-guides/useful-config-options.md).
 
-```tcl
+```applescript
 command /sethome:
     trigger:
         set {home::%player's uuid%} to player's location
@@ -76,7 +76,7 @@ command /home:
 
 Now each player has a unique home variable that we can get using their uuid. Note the use of `::` in the variable name. This is used to create list variables, which are explained [here](list-basics.md), with a more in- depth explanation [here](../lists/). The main thing to understand is that using `::` means we have much more power over the variable. We can delete all homes at once, we can easily see all the homes that are set, and much more.&#x20;
 
-```tcl
+```applescript
 # clear all homes
 clear {home::*}
 

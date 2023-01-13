@@ -6,7 +6,7 @@ Lists are extra powerful variables. Instead of just a single name referring to a
 
 Let's start by introducing some definitions, so we're all on the same page. Lists, in Skript, are variables that use the `::` separator. In most cases, it'll look like `{_my-list::*}`. This `::*` means "get all the values of the list `_my-list`". Values are the things you store in your list. These could be numbers, locations, text, or any combination. Each value in a list also has a corresponding name, an index. You can use this index to access that value specifically. By default, the indices of a list will be from 1 to however long the list is. Here's an example:
 
-```bash
+```applescript
 set {list::*} to "hey", "how", "are", "you" and 55
 
 # the following is not code, it's just a representation of the list
@@ -19,14 +19,14 @@ list::5 -> 55
 
 Using these indices, we can get a value separately from all the other values, by naming it specifically:
 
-```bash
+```applescript
 send {list::3} to player
 # Player receives "are"
 ```
 
 We can also set the index of a value to whatever we want. This is especially useful for storing information that's attributed to something else, like a player's last death location:
 
-```bash
+```applescript
 on death of player:
     set {last-death::%uuid of victim%} to event-location
     
@@ -41,13 +41,13 @@ Using lists like this makes it simple to see all the last death locations at onc
 
 Lists are also very useful for sending information to a certain group of people:
 
-```bash
+```applescript
 send "Hello" to {admins::*}
 ```
 
 Or sending a bunch of things all at once:
 
-```tcl
+```applescript
 set {_info::*} to player's name, player's level, player's location
 send {_info::*} to player
 ```
@@ -60,7 +60,7 @@ This is where the major power of lists comes into play. Lists can be easily modi
 
 We have the normal changers:
 
-```bash
+```applescript
 # adding adds an element, or value, to the list
 # its index will be the first available number (1, 2, 3, etc)
 add "hello" to {_list::*}
@@ -81,13 +81,13 @@ set {_list::3} to 10
 
 In a similar vein, there's also a condition called `contains` which will allow you to check if a value is contained somewhere in a list:
 
-```bash
+```applescript
 if {_list::*} contains "hello":
 ```
 
 We can also loop lists, which opens up even more possibilities:
 
-```bash
+```applescript
 set {list::*} to "hey", "how", "are", "you" and 55
 loop {_list::*}:
     send "%loop-index% - %loop-value%" to player
@@ -95,7 +95,7 @@ loop {_list::*}:
 
 In this code, we loop through a list, sending the index and the value each time. Our output will look something like this:
 
-```bash
+```applescript
 1 - hey
 2 - how
 3 - are

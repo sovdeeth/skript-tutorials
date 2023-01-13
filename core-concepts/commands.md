@@ -2,7 +2,7 @@
 
 Skript allows you to easily create custom commands in your scripts, like the following:
 
-```tcl
+```applescript
 # A simple "broadcast" command for broadcasting the text argument.
 # This is accessible only to users with the "skript.example.broadcast" permission.
 
@@ -19,7 +19,7 @@ That's a simple example, but you can do much more complex things with custom com
 
 Here's the full list of features that you can use in your commands. They're all optional, except for the trigger section. We'll explain each one individually below.
 
-```tcl
+```applescript
 command /<command name> <arguments>:
     aliases:             # alternate command names
     executable by:       # players or console
@@ -39,7 +39,7 @@ command /<command name> <arguments>:
 
 The command name is what comes immediately after `command`. It can consist of any characters you want, except for space. Additionally, the / in front of the command is optional. This means `command /broadcast` and `command broadcast` are the same. Here are a few examples:
 
-```tcl
+```applescript
 command /test-command:
     trigger:
         broadcast "Command: /test-command"
@@ -70,7 +70,7 @@ The argument can then be referenced in the trigger section by `arg-1` or `argume
 
 Arguments can be used in a lot of different ways, so I'll provide some examples ranging from the simplest possible to more complex uses.
 
-```tcl
+```applescript
 # this command can be run by "/test" or by "/test command".
 command /test [command]:
     trigger:
@@ -126,7 +126,7 @@ command /give-item <item> [with name <text>] [[and] with lore <text>]:
 
 Who can execute this command. The options are `players`, `console`, or `players and console`.
 
-```tcl
+```applescript
 command /shutdown:
     executable by: console
     trigger:
@@ -137,7 +137,7 @@ command /shutdown:
 
 Aliases are alternate names for your command. For example, the command `/teleport` could have an alias `/tp`. Like in the command name, the forward slash (`/`) is optional.
 
-```tcl
+```applescript
 # this command can be run by "/teleport" or by "/tp".
 command /teleport <number> <number> <number>:
     executable by: players
@@ -154,7 +154,7 @@ The description of the command. Other plugins can get/show this with `/help`, li
 
 The permission required to execute this command. The message sent to players without the proper permission can be customized with the `permission message:` field.
 
-```tcl
+```applescript
 command /shutdown:
     permission: server.admin
     permission message: Only admins can shut down the server!
@@ -166,7 +166,7 @@ command /shutdown:
 
 This field takes a timespan that the player must wait out before executing the command again. The cooldown can be canceled with `cancel the cooldown` ([documentation here](https://docs.skriptlang.org/effects.html#EffCancelCooldown)). Like with the permissions, you can change the default cooldown message with the `cooldown message:` field. The remaining time of the cooldown can be displayed with `%remaining time%` Additionally, you can store the cooldown in a variable with `cooldown storage:`, in order to store the cooldown even when the server restarts.
 
-```tcl
+```applescript
 command /vote:
     executable by: players
     cooldown: 1 day
@@ -181,7 +181,7 @@ There are also a number of expressions you can use to interact with the cooldown
 If you've enabled `keep command last usage dates` in your `config.sk` file, you can get the last time the player used the command with `last usage date`.\
 You can see the full syntax for these expressions [here](https://docs.skriptlang.org/expressions.html#ExprCmdCooldownInfo).
 
-```tcl
+```applescript
 # The same vote command but with an improved cooldown message.
 # Sorry about the really long line, can't do much about how it's displayed.
 command /vote:
@@ -198,7 +198,7 @@ command /vote:
 
 This section is where all the code the command should run is located. I'm sure you're familiar with how it works from the previous examples, but in case you're still unsure, some more examples of commands will be displayed here. You can see these example commands and more in the `/plugins/Skript/scripts/-examples/commands.sk` file in your server.
 
-```tcl
+```applescript
 command /item <items>:
     description: Give yourself some items.
     usage: /item
@@ -219,7 +219,7 @@ command /item <items>:
                     send "%loop-item% is blacklisted and cannot be spawned." to player
 ```
 
-```tcl
+```applescript
 command /home <text> [<text>]:
     description: Set, delete or teleport to your home.
     usage: /home set/remove <name>, /home <name>

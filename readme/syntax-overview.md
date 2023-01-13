@@ -14,7 +14,7 @@ I will warn you, this is a very long page. Feel free to use the right-side bar t
 
 You may have looked at the Skript docs and been very confused on how to turn that long string of words and symbols into actual code. The docs can be a bit daunting if you don't know the rules for how to read them. Here's a little crash course, but if you want more detail, head over to [Reading Syntax](../syntax-types/reading-syntax.md).
 
-```bash
+```applescript
 (message|send [message[s]]) %objects% [to %players/console%] [from %player%]
 ```
 
@@ -24,7 +24,7 @@ The second big thing are the parts where you can choose one or another. These lo
 
 Finally, note the use of `%`. Anything enclosed in percent signs denotes some blank spot left for us to fill in. Here, `%objects%` means we can put whatever kind of information we want there. `%player%` means we need to put a player there, and `%players/console%` means we can put multiple players and/or the console in that spot. Let's see a few ways we could write the syntax out:
 
-```bash
+```applescript
 message "test" to player
 send message "Hey there!" to player and console
 send {_a} and {_b} and "c" to all players
@@ -37,7 +37,7 @@ Hopefully this helps you see how the syntax in the docs can be turned into actua
 
 Top level syntaxes are things you would write to start out a script:
 
-```bash
+```applescript
 # an event
 on place of cobblestone:
     # run code
@@ -73,7 +73,7 @@ Expressions are syntaxes that **represent something**, filling the role of a nou
 
 Expressions can be further broken down into some subcategories, which we'll talk about in more detail in the Syntax Types page. For now, just know that there are simple expressions and combined expressions. Simple expressions rely on no other expressions, they're completed puzzles. Combined expressions are more like effects in that they require some more puzzle pieces to be completed. Here are some examples:
 
-```bash
+```applescript
 # simple expressions
 the attacker
 the console
@@ -94,7 +94,7 @@ Aliases are similar, but mainly for items. Aliases make it easier to write out i
 
 Anyway, let's get back on track with some examples. I'm going to write some basic lines of Skript, and then identify the effects and expressions in each one.
 
-```bash
+```applescript
 # Example 1: giving an item to a player in a command
 command /give-food <player>:
     trigger:
@@ -105,7 +105,7 @@ This is a pretty short line, so there isn't too much to dissect. Firstly, we hav
 
 The effect, as always, begins our line. Here we're using the Change effect, a very common effect. Specifically, we're using the `give` syntax of the effect:
 
-```bash
+```applescript
 (add|give) %objects% to %~objects%
 ```
 
@@ -117,7 +117,7 @@ The `~` here just means that that expression cannot be a literal, but we'll talk
 
 Here's a slightly more complex example:
 
-```bash
+```applescript
 # Example 2: sending the player's name and their tool's type when they right click.
 on right click:
     send "%player's name% and %type of player's tool%" to all players
@@ -125,7 +125,7 @@ on right click:
 
 Again, we have a top-level element, this time a right-click event. Inside this event, we have a `send` effect.&#x20;
 
-```bash
+```applescript
 (message|send [message[s]]) %objects% [to %players/console%] [from %player%]
 ```
 
@@ -135,7 +135,7 @@ You can see we're not using the very last bit, `from %player%`, as it's optional
 
 Our text, however, is a little more complicated. We're using `%` symbols, which is Skript's way of inserting the values of expressions into text. The first one is `player's name`, which is a combined expression:
 
-```bash
+```applescript
 %offline players/entities/blocks/item types/inventories/slots/gamerules%'[s] (name[s]|(display|nick|chat|custom)[ ]name[s])
 # our specific use:
 %offline players/entities%'[s] name[s]
@@ -155,7 +155,7 @@ Conditions are what you think of as **if statements**. Conditions can compare tw
 
 Conditions don't technically have to be part of an if statement, but it's rare that you see them outside of that usage. Conditions can be written on their own, where they act as gatekeepers for your code. If they don't pass (i.e. they are false), then the code after won't run. This is generally called an _inline condition_. I'll put some examples below:
 
-```bash
+```applescript
 # a normal if statement using a condition:
 if level of player >= 5:
     broadcast "yay!"
@@ -177,7 +177,7 @@ If you want to learn more about these various uses, check out [Conditionals](../
 
 Notice that in the first example above, we had to use a colon (`:`) and indent the next line of code. When this happens, we call it a _section_. Sections are smaller, well, sections of your whole program. In the code below, notice how we have two levels of indentation, and thus two sections.
 
-```ruby
+```applescript
 if player's health >= 5:
     spawn a zombie at player:
         set the zombie's helmet to an iron helmet

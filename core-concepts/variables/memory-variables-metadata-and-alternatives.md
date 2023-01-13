@@ -42,7 +42,7 @@ This makes metadata ideal for temporary information tied to some entity or block
 
 For example, let's use metadata to make an arrow explode when it hits something:
 
-```ruby
+```applescript
 on projectile hit:
     if projectile is an arrow:
         create a fake explosion at projectile    
@@ -50,7 +50,7 @@ on projectile hit:
 
 This makes explosions at every arrow, so let's make it only happen to arrows fired from a specifically named bow.
 
-```ruby
+```applescript
 on shoot:
     if projectile is an arrow:
         if name of shooter's tool is "Explosive Bow":

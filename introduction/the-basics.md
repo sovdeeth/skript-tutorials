@@ -12,7 +12,7 @@ Now you've got an empty file to play around in. You can write Skript in whatever
 
 Let's start with a simple command, /food. We don't want our players to go hungry, so when they run the command we'll fill up their hunger bar for them. We start by writing out the syntax for a new command. If you want to know more about this, you can skip to [Custom Commands](../core-concepts/commands.md), but most of it isn't necessary yet.
 
-```tcl
+```applescript
 # here's our command, just a basic /food.
 command /food:
     trigger:
@@ -27,27 +27,27 @@ So trigger is responsible for holding all the code that runs when the command is
 
 You should see one result, called Food Level. If you look at the patterns, you can see that `player`, `food`, and `level` all show up in there.  It might be a bit hard to read, which is why we have a [syntax reading tutorial](../syntax-types/reading-syntax.md), but it's pretty simple once you know how. For now, we'll just look at the example.&#x20;
 
-```tcl
+```applescript
 set the player's food level to 10
 ```
 
 We can also do some addition and subtraction really easily:
 
-```ruby
+```applescript
 add 2 to the player's food level
 subtract 3 from the player's food level
 ```
 
 Before we get ahead of ourselves, though, we need to talk about `the player`. In commands, the person who executes the command can be referred to as `player`, or `sender`. However, we don't always have `player` to help us out. Sometimes we'll have to get a player from a variable (explained later), or from an event value:
 
-```ruby
+```applescript
 set {_player-variable}'s food level to 10
 set the food level of event-player to 10
 ```
 
 But I digress. Let's put this line into our command:
 
-```ruby
+```applescript
 command /food:
     trigger:
         set the player's food level to 10
@@ -59,7 +59,7 @@ Perfect! A simple, easy food command. It doesn't seem very fun though. Let's giv
 
 Spoilers: it's `give`:
 
-```ruby
+```applescript
 command /food:
     trigger:
         give 2 steak to player
@@ -67,7 +67,7 @@ command /food:
 
 Much better. Let's add some class into this command though, and tell the player that they were given some food. Bonus points for using the docs to find the effect used to send messages.
 
-```ruby
+```applescript
 command /food:
     trigger:
         give 2 steak to player
@@ -82,7 +82,7 @@ Notice that all the text we want to send is surrounded by `"`. Surrounding the t
 
 Note that there are some rules surrounding text that might be confusing at first. If you want to use `"`, `#`, or `%` in a string, you have to type two of them in a row. This is because Skript uses these symbols for important things, and typing two in a row tells Skript to just treat it as one, normal, non-code character.
 
-```tcl
+```applescript
 send "this is a ""test"" of percent signs (%%) and hash tags (##)" to player
 
 # this sends: 
@@ -92,7 +92,7 @@ send "this is a ""test"" of percent signs (%%) and hash tags (##)" to player
 
 You might encounter strings with code inside them, surrounded by `%` signs. This will be explained a little later in this tutorial, but it's basically just telling Skript that there's actually some code to run here, and the result of that code will end up in the string.
 
-```bash
+```applescript
 send "5 + 10 = %5 + 10%" to player
 
 # this sends:
@@ -106,13 +106,13 @@ You can read more about the things you can and can't do with strings [here](../c
 
 Now let's get fancy and make it so operators get golden apples instead. We can check whether a player is an op with the following condition:
 
-```ruby
+```applescript
 if player is an op:
 ```
 
 Conditions are syntax elements that are essentially yes/no questions, `player is an op`, `block at player is dirt`, `name of player's tool is "hello!"`. We use these inside if statements to control what code gets run:
 
-```tcl
+```applescript
 command /food:
     trigger:
         if player is an op:
@@ -131,7 +131,7 @@ You may have noticed that we have some duplicate code going on here. Generally, 
 
 Let's make this better. First, we can just move the messages outside of the if/else. They're the same in both sections, so we only need one version:
 
-```tcl
+```applescript
 command /food:
     trigger:
         if player is an op:
@@ -145,7 +145,7 @@ Un-indenting the send pulls it out of the `else`, meaning it will be run whether
 
 Variables are extremely useful. They basically store data for you so you can keep using it again and again. They come in two main types, global and local variables. Global variables can be used anywhere in any script, while local variables can only be used in the command/event they were defined in. They're surrounded by `{}` and can be named pretty much whatever you want. Variables that start with `_`, like `{_local}`, are local variables. Everything else is global.
 
-```tcl
+```applescript
 command /food:
     trigger:
         if player is an op:
@@ -164,7 +164,7 @@ Variables are explained further [here](../core-concepts/variables/), in the [Cor
 
 Since we have our food in a convenient variable now, let's also tell the player exactly what food they received. We can put the result of any expression or variable into text using `%` signs.
 
-```tcl
+```applescript
 command /food:
     trigger:
         if player is an op:
@@ -179,7 +179,7 @@ The `%%` tell Skript to pay attention and read the stuff inside as code instead 
 
 However, %% should only ever be used in those two situations: inside a string, or inside a variable. You should not be using it outside of that.&#x20;
 
-```tcl
+```applescript
 # BAD
 send "test" to %player%
 set %player's tool% to stone
@@ -195,7 +195,7 @@ We've been using a command all this time, but events are another extremely usefu
 
 Events are kind of like commands in that they're never indented. Commands and events always start all the way to the left. Since we've been giving players food, let's use an `on consume` event:
 
-```ruby
+```applescript
 on consume:
     # code here
 ```
@@ -204,14 +204,14 @@ Notice that we didn't need to use `trigger` here. This is because commands can h
 
 We can also make this event a bit more specific. Let's say we want to give the player regeneration when they eat rotten flesh, to encourage cannibalism. We can use this, instead:
 
-```ruby
+```applescript
 on consume of rotten flesh:
     # code here
 ```
 
 Now it'll only trigger when someone eats rotten flesh, rather then when they eat any item. Note that this is nearly identical to using an if statement at the start of the event:
 
-```ruby
+```applescript
 on consume:
     if event-item is rotten flesh:
         # code here
@@ -219,7 +219,7 @@ on consume:
 
 Let's use the first one, it's cleaner and actually runs slightly better. Anyway, we need to give the player regeneration. You probably already know about `/effect give`, and we could use that if we wanted. But we should stick to Skript syntax as much as possible. After a quick search on the docs, we find the following:
 
-```ruby
+```applescript
 apply swiftness 2 to the player
 
 
@@ -229,14 +229,14 @@ execute console command "/effect give %player% regeneration"
 
 Pretty simple. Let's just change that to `regeneration 1` and add it to our code. We'll also give it a duration of 5 seconds.
 
-```ruby
+```applescript
 on consume of rotten flesh:
     apply regeneration 1 to the player for 5 seconds
 ```
 
 Perfect! Now we get regen while eating flesh. If you eat multiple in a row though, the effect's duration starts to stack. This may be something you want, and you can keep it like this. If you want the timer to never go above 5 seconds, though, you need to add `replacing the existing effect`
 
-```ruby
+```applescript
 on consume of rotten flesh:
     apply regeneration 1 to the player for 5 seconds replacing the existing effect
 ```

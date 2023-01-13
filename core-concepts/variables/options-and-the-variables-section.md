@@ -6,14 +6,14 @@ The Options section and the Variables section are two powerful tools for making 
 
 Options, for those of you who have programmed in C, are like macros. For those of you who haven't, they're keywords that represent bits of code. In the options section, you say&#x20;
 
-```bash
+```applescript
 options:
     error-msg: You've encountered an error!
 ```
 
 and then you can use `{@error-msg}` in your code. It will be replaced with the exact code you put in the options section, unlike a variable set to the same string.
 
-```bash
+```applescript
 set {_a} to "{@error-msg}"
 
 send "{@error-msg}"
@@ -27,7 +27,7 @@ This is double-edged sword. Notice that even though we put the `{@error-msg}` di
 
 Be careful with options, then can help you cut down the amount of code you actually write, but they can also help obscure bugs and errors. It's also good to be wary of options in terms of parse times. I've seen people put items into options because they were tired of writing them out, or copy-pasting them.&#x20;
 
-```bash
+```applescript
 options:
     item-1: diamond sword of sharpness 3 named "hey" with lore "no", "yes", and "maybe so" 
     
@@ -39,7 +39,7 @@ This is bad practice. First, it obscures how long the line actually is, and can 
 
 If you put the item into a global variable instead, it avoids both these issues:
 
-```bash
+```applescript
 on load:
     set {item-1} to diamond sword of sharpness 3 named "hey" with lore "no", "yes", and "maybe so"
     
@@ -54,7 +54,7 @@ For you, it's nearly the same. But for the parser, it's wayyy better. **In gener
 
 Many new Skripters get the wrong impression about the variables section. Many think that you have to put the names of your global variables here in order for them to work. This is not true. The variables section is really just a glorified `on load` event. Here's how it works.
 
-```bash
+```applescript
 variables:
     {test-var} = 10
     {test-var-2::%player%} = 10
