@@ -30,9 +30,21 @@ default:
 	# I recommend to use a single character to denote unsaved variables (similar to local variables' '_'), e.g. '-', in which case the last database's pattern should be '(?!-).*'.
 ```
 
-The last four lines of comments describe how to enable memory variables. In simple terms, you just replace the `pattern:` line with a new regex pattern, one that excludes variables that start with `-`. As you can see in the comments, this pattern is  `(?!-).*`.&#x20;
+The last four lines of comments describe how to enable memory variables. In simple terms, you just replace the `pattern:` line with a new regex pattern, one that excludes variables that start with `-`. As you can see in the comments, this pattern is `(?!-).*`.
 
-However, know that you can set this pattern to whatever you want, which also means your memory variables can follow whatever format you want, as long as you set the pattern up properly. I advise sticking with convention and using `-`.
+Your edited config should look like this:
+
+```yaml
+	type: CSV
+	
+	pattern: (?!-}.*
+	
+	file: ./plugins/Skript/variables.csv
+	
+	backup interval: 2 hours
+```
+
+However, know that you can set this pattern to whatever you want, which also means your memory variables can follow whatever format you want as long as you set the pattern up properly. I advise sticking with convention and using `-`.
 
 ## Metadata
 
@@ -73,6 +85,6 @@ There are many other ways to deal with information and data in Skript. Addons al
 That said, here are some general rules:
 
 * Try to store the least amount of data possible for the long term. No matter your storage solution, it'll always be faster and easier if you store less information.
-  * In this vein, try to make use of temporary structures like local variables, metadata, or memory variables.&#x20;
+  * In this vein, try to make use of temporary structures like local variables, metadata, or memory variables.
 * When you're using a relatively slow method of storing data (databases, reading/writing files, etc), try to load all the relevant information **only when you need it**. When a player joins, for example, try to copy all their information from your long-term solution into a temporary, fast format like memory variables. Then, when they leave, write the updated information back to the slower, long-term storage.
 * Prioritize usability and readability over performance. If a high-performance solution makes your code a nightmare to read and maintain, consider not making that sacrifice. Losing a few milliseconds per tick is not worth it if it saves you hours of extra work in the future when you need to modify your code.
