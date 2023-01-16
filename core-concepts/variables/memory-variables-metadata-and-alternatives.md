@@ -6,7 +6,11 @@ While our standard global and local variables are versatile tools and are perfec
 
 Memory variables are very easy to wrap your head around. Simply, they're just global variables with one difference. They don't get saved when the server stops. This means, of course, you don't get to save data over long-term, but you still get the benefits of the global scope. Plus, since they're not saved, they're also a lot gentler on the server.
 
-These are extremely useful for when you need to transfer information between triggers or over time, but you don't really need to keep it around for the long term. Whenever you're using global variables, ask yourself if you really need to save this information over restarts. If you don't, try using a memory variable.
+These are extremely useful for when you need to transfer information between triggers or over time, but you don't really need to keep it around for the long term.
+
+{% hint style="info" %}
+&#x20;Whenever you're using global variables, ask yourself if you really need to save this information over restarts. If you don't, try using a memory variable.
+{% endhint %}
 
 Now, I haven't explained how to actually write a memory variable yet, and this is because it's not a default part of Skript. You have to specifically enable them in your `config.sk` file, and they can take whatever form you give them. The general convention is to make all variables that start with `-` memory variables, eg: `{-variable}, {-list::*}`. You can do this by opening your `config.sk` file and scrolling down to line 310 or so, where you should see the following:
 
@@ -50,7 +54,9 @@ However, know that you can set this pattern to whatever you want, which also mea
 
 Metadata serves a similar role to memory variables, in that it's global and it doesn't stick around over restarts. It has one major difference, though, and it's that metadata is tied to a specific "metadata holder". These holders can be a few different things, but importantly players, entities, and blocks are all metadata holders.
 
+{% hint style="info" %}
 This makes metadata ideal for temporary information tied to some entity or block, as you don't have to worry about giving it a unique name for each player or holder. You can see the syntax [here](https://docs.skriptlang.org/expressions.html#ExprMetadata).
+{% endhint %}
 
 For example, let's use metadata to make an arrow explode when it hits something:
 

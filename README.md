@@ -6,7 +6,9 @@ This gitbook contains a crash course in Skript programming, so if you're here to
 
 For those of you who are already familiar with Skript, go ahead and use the navigation table on the left to jump to what you're interested in. Currently, only a few pages are actually complete, so you can use the links below to jump to completed tutorials. If you're interested in helping out, the github repo is linked on the right. Pull requests are welcome!
 
+{% hint style="warning" %}
 **Note:** These tutorials are for the current version of the SkriptLang Skript fork (2.6.4) and are not guaranteed to be correct for other versions or forks. This site does not include any tutorials for addons, either.
+{% endhint %}
 
 ### Completed Pages
 

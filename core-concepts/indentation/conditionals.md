@@ -6,7 +6,7 @@ Conditions can take a few different forms in Skript, each of which will be outli
 
 ## Dedicated Conditions
 
-Conditions in Skript are pretty straight forward: most things you may want to check have their own dedicated condition. Some others might not have a dedicated condition, and instead use a kind of  "generic" condition with an expression. For example, let's say that you wanted to check if a player is allowed to fly. You have two options:
+Conditions in Skript are pretty straight forward: most things you may want to check have their own dedicated condition. Some others might not have a dedicated condition, and instead use a kind of "generic" condition with an expression. For example, let's say that you wanted to check if a player is allowed to fly. You have two options:
 
 ```applescript
 if player can fly
@@ -28,7 +28,9 @@ Generic conditions are used when a dedicated condition does not exist or you hav
 if player's balance < 20
 ```
 
-You can see all of the various generic condition syntaxes [here, under the Comparison condition](https://docs.skriptlang.org/conditions.html#CondCompare).:&#x20;
+{% hint style="info" %}
+You can see all of the various generic condition syntaxes [here, under the Comparison condition](https://docs.skriptlang.org/conditions.html#CondCompare).
+{% endhint %}
 
 ## If Statements
 
@@ -125,9 +127,9 @@ player is op
 send "hello operator"
 ```
 
-Note that inline ifs will skip all of the following code in their section. When they're placed at the root level of an event or command, they will effectively stop all execution if they don't pass. If placed at the root level of a loop, they'll skip to the next value like `continue` does if they don't pass. &#x20;
+Note that inline ifs will skip all of the following code in their section. When they're placed at the root level of an event or command, they will effectively stop all execution if they don't pass. If placed at the root level of a loop, they'll skip to the next value like `continue` does if they don't pass.
 
-&#x20;Inline ifs also allows you to chain conditions without indenting, like the following:
+Inline ifs also allows you to chain conditions without indenting, like the following:
 
 ```applescript
 player is op
@@ -150,7 +152,9 @@ send "hello" if distance between player and {spawn} <= 10
 
 Notice how there is no indentation differences, colons, and how the effect comes first and then the condition.
 
+{% hint style="warning" %}
 Keep note that there is no `else if` or `else` options with this method.
+{% endhint %}
 
 ## Ternary Operators
 
@@ -166,7 +170,7 @@ If it seems a bit hard to understand, let's highlight the expression itself:
 "hello player" if player is not op, else "hello admin" 
 ```
 
-This is saying the following:&#x20;
+This is saying the following:
 
 Return the text `hello player` if the player is op.\
 If they are not op (the condition fails), then return `hello admin`.

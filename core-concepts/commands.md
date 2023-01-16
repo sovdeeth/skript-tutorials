@@ -178,8 +178,11 @@ command /vote:
 
 There are also a number of expressions you can use to interact with the cooldowns of commands. You can get the remaining time with `remaining time`, the elapsed time with `elapsed time`, and the total time with `cooldown time`. You can also get the bypass permission with `bypass permission`.
 
-If you've enabled `keep command last usage dates` in your `config.sk` file, you can get the last time the player used the command with `last usage date`.\
+If you've enabled `keep command last usage dates` in your `config.sk` file, you can get the last time the player used the command with `last usage date`.
+
+{% hint style="info" %}
 You can see the full syntax for these expressions [here](https://docs.skriptlang.org/expressions.html#ExprCmdCooldownInfo).
+{% endhint %}
 
 ```applescript
 # The same vote command but with an improved cooldown message.

@@ -2,11 +2,13 @@
 
 Syntax is a word that means the set or rules or conventions that define a language. In our case with Skript, syntaxes are various things you can write to make Skript do different things. For example, `player` is a syntax that means either the player entity type, or the player involved in the event, depending on when and where it is used.
 
+{% hint style="info" %}
 Skript has a few main types of syntaxes:
 
 * Top-level syntaxes like events, commands, function definitions, and the option and variables sections.
 * Sections and conditions, syntaxes that require some indentation.
 * Effects, expressions, literals and similar syntaxes that make up the fundamental bits of a line of Skript code.
+{% endhint %}
 
 I will warn you, this is a very long page. Feel free to use the right-side bar to skip the the sections you are most interested in.
 
@@ -59,15 +61,17 @@ Top-level syntaxes are pretty straightforward, just write an event, or a command
 
 ### Effects
 
-Effects are as their name suggests. They **effect change** on things, like a verb. In fact, nearly every effect is the verb of the "sentence" it creates. If you look at the Skript documentation you'll see the Effect tab and all the possible syntaxes you can use. Things like `teleport %entities% to %location%`, or `send %objects% to %players/console%`.&#x20;
+Effects are as their name suggests. They **effect change** on things, like a verb. In fact, nearly every effect is the verb of the "sentence" it creates. If you look at the Skript documentation you'll see the Effect tab and all the possible syntaxes you can use. Things like `teleport %entities% to %location%`, or `send %objects% to %players/console%`.
 
+{% hint style="info" %}
 Note that you can only have **one** effect on each line. There is no way to have any line with more than one effect.
+{% endhint %}
 
 Think of most Effects like a jigsaw puzzle with a few pieces missing (some already have all the pieces they need, but that's rare). The docs tell you what pieces are already there (`send`, `to`) and what the shape of the missing pieces looks like (`objects`, `players/console`). These are **types**, and they tell you what you can and can't put in the blanks. Anything can go into an `object` slot, but text can't go into a `player` slot. If the type is plural, it means you can put multiple things into that slot, like a list.
 
 ### Expressions
 
-We just went over the basics of Effects and we found that we need to fill in some blanks. What do we put in place of `objects`, in place of `players/console`? This is what Expressions do.&#x20;
+We just went over the basics of Effects and we found that we need to fill in some blanks. What do we put in place of `objects`, in place of `players/console`? This is what Expressions do.
 
 Expressions are syntaxes that **represent something**, filling the role of a noun in the "sentence". Again, if you look in the Expressions tab on the Skript documentation you will be able to see all the available expressions.
 
@@ -86,7 +90,7 @@ the name of %item%
 the block at %location%
 ```
 
-We should also briefly touch on Literals and Aliases, which are fancy names for pretty simple concepts. Literals are just the literal value of something, written out. For example, `"Hello"` is a text literal: It's text, and it's written out literally. It's not created through some expression, like `join "he" and "llo"` or `"the answer is %10 + 5%"`. Likewise, any number you write out is a literal, and same with writing out entity types like `creeper` or `skeleton`.&#x20;
+We should also briefly touch on Literals and Aliases, which are fancy names for pretty simple concepts. Literals are just the literal value of something, written out. For example, `"Hello"` is a text literal: It's text, and it's written out literally. It's not created through some expression, like `join "he" and "llo"` or `"the answer is %10 + 5%"`. Likewise, any number you write out is a literal, and same with writing out entity types like `creeper` or `skeleton`.
 
 Aliases are similar, but mainly for items. Aliases make it easier to write out item names, because Minecraft items aren't always named well behind the scenes. Some examples of aliases include: `diamond sword`, `oak leaves`, and (surprisingly) `netherite chestplate of unbreaking 3`. That last one is a little out of place, but it's good to remember that when you're making enchanted objects like that, the enchantments have to come immediately after the name of the item.
 
@@ -101,7 +105,7 @@ command /give-food <player>:
         give 5 steak to arg-1
 ```
 
-This is a pretty short line, so there isn't too much to dissect. Firstly, we have our top-level syntax, which is a command. We won't be going in to the details of those here. Inside that command, we have this line of code: `give 5 steak to arg-1`. This consists of 1 effect, an alias, and a simple expression.&#x20;
+This is a pretty short line, so there isn't too much to dissect. Firstly, we have our top-level syntax, which is a command. We won't be going in to the details of those here. Inside that command, we have this line of code: `give 5 steak to arg-1`. This consists of 1 effect, an alias, and a simple expression.
 
 The effect, as always, begins our line. Here we're using the Change effect, a very common effect. Specifically, we're using the `give` syntax of the effect:
 
@@ -109,13 +113,13 @@ The effect, as always, begins our line. Here we're using the Change effect, a ve
 (add|give) %objects% to %~objects%
 ```
 
-The `~` here just means that that expression cannot be a literal, but we'll talk more about that in the Syntax Types page. Anyway, we can see that this means our first `objects` is going to be the `5 steak` and our second one is going to be `arg-1`.&#x20;
+The `~` here just means that that expression cannot be a literal, but we'll talk more about that in the Syntax Types page. Anyway, we can see that this means our first `objects` is going to be the `5 steak` and our second one is going to be `arg-1`.
 
-`arg-1` is the Argument expression, which is a simple expression that refers to the argument of our command.&#x20;
+`arg-1` is the Argument expression, which is a simple expression that refers to the argument of our command.
 
 `5 steak` is an alias for an item, rather self explanatory. 5 steaks.
 
-Here's a slightly more complex example:
+#### Here's a slightly more complex example:
 
 ```applescript
 # Example 2: sending the player's name and their tool's type when they right click.
@@ -123,7 +127,7 @@ on right click:
     send "%player's name% and %type of player's tool%" to all players
 ```
 
-Again, we have a top-level element, this time a right-click event. Inside this event, we have a `send` effect.&#x20;
+Again, we have a top-level element, this time a right-click event. Inside this event, we have a `send` effect.
 
 ```applescript
 (message|send [message[s]]) %objects% [to %players/console%] [from %player%]
@@ -143,7 +147,7 @@ Our text, however, is a little more complicated. We're using `%` symbols, which 
 
 So we have the simple expression `player`, or `event-player`, put into the combined expression to make `player's name`.
 
-Likewise for the player's tool. It's the simple expression `player` put into a combined expression to form `player's tool`. This expression though, is taken one step further and we use it in another combined expression to make `type of player's tool`.&#x20;
+Likewise for the player's tool. It's the simple expression `player` put into a combined expression to form `player's tool`. This expression though, is taken one step further and we use it in another combined expression to make `type of player's tool`.
 
 Then we can take all of these values, put them into a text, and send it off to all the players on the server.
 
@@ -171,7 +175,9 @@ broadcast "yay!" if level of player >= 5
 broadcast "yay!" if level of player >= 5 else "aww."
 ```
 
+{% hint style="info" %}
 If you want to learn more about these various uses, check out [Conditionals](../core-concepts/indentation/conditionals.md).
+{% endhint %}
 
 ### Sections
 
@@ -187,14 +193,20 @@ if player's health >= 5:
 
 Our first section is the if statement. If the player's health is less than 5, we just skip the entire section of code and move on. However, if it's greater or equal to 5, we'll go into that section.
 
-We then have the spawn section. This section is pretty neat, because it allows you to modify the entity that you're spawning before it officially spawns. It has the special property of being able to refer to the spawning entity with the word `entity` or in this case, `zombie`. No need for `last spawned entity`.&#x20;
+We then have the spawn section. This section is pretty neat, because it allows you to modify the entity that you're spawning before it officially spawns. It has the special property of being able to refer to the spawning entity with the word `entity` or in this case, `zombie`. No need for `last spawned entity`.
 
 After we finish running the spawn section, we'll pop back out to the if statement's section and finish running the `send` effect. That's the last bit of code, so we stop there.
 
 ## Conclusion
 
-I hope this has giving you a bit more grounding in the terms and meaning behind how Skript's syntaxes work and how they're named and categorized.&#x20;
+I hope this has giving you a bit more grounding in the terms and meaning behind how Skript's syntaxes work and how they're named and categorized.
 
-I want to stress that you do not need to do this kind of analysis when you're writing code. It's good to know how different syntactic elements work together and how you can combine them to make bigger things happen. However, most of your code writing should just be taking things from the docs and putting them together to make it work. You don't need to stress about what's a literal, what's an alias, etc. Just know that effects are different from expressions and that conditions go in if statements, and you're pretty much golden.
+{% hint style="warning" %}
+I want to stress that you do not need to do this kind of analysis when you're writing code.
+
+&#x20;It's good to know how different syntactic elements work together and how you can combine them to make bigger things happen. However, most of your code writing should just be taking things from the docs and putting them together to make it work.&#x20;
+
+You don't need to stress about what's a literal, what's an alias, etc. Just know that effects are different from expressions and that conditions go in if statements, and you're pretty much golden.
+{% endhint %}
 
 If you are curious about the more advanced technicalities in how Skript works, you can read the pages in Syntax Types.

@@ -11,8 +11,8 @@ Here's a list of useful resources for your skripting use.
 ### Other Tutorials
 
 * [https://skripthub.net/tutorials/?search=\&sort=score](https://skripthub.net/tutorials/?search=\&sort=score)
-* [https://skunity.com/tutorials/](https://skunity.com/tutorials/)
-* [https://forums.skunity.com/](https://forums.skunity.com/)
+* [https://skunity.com/tutorials/](https://skunity.com/tutorials/)&#x20;
+* [https://forums.skunity.com/](https://forums.skunity.com/) (Make your own judgements on a post's quality)
 
 ### Asking for Help
 

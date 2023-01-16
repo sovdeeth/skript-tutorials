@@ -4,7 +4,7 @@ The Options section and the Variables section are two powerful tools for making 
 
 ## Options
 
-Options, for those of you who have programmed in C, are like macros. For those of you who haven't, they're keywords that represent bits of code. In the options section, you say&#x20;
+Options, for those of you who have programmed in C, are like macros. For those of you who haven't, they're keywords that represent bits of code. In the options section, you say
 
 ```applescript
 options:
@@ -23,9 +23,10 @@ This is double-edged sword. Notice that even though we put the `{@error-msg}` di
 
 <pre class="language-bash"><code class="lang-bash">send "{@error-msg}"
 # could become
-<strong>send ""You've encountered an error!""</strong></code></pre>
+<strong>send ""You've encountered an error!""
+</strong></code></pre>
 
-Be careful with options, then can help you cut down the amount of code you actually write, but they can also help obscure bugs and errors. It's also good to be wary of options in terms of parse times. I've seen people put items into options because they were tired of writing them out, or copy-pasting them.&#x20;
+Be careful with options, then can help you cut down the amount of code you actually write, but they can also help obscure bugs and errors. It's also good to be wary of options in terms of parse times. I've seen people put items into options because they were tired of writing them out, or copy-pasting them.
 
 ```applescript
 options:
@@ -48,7 +49,11 @@ on load:
 set slot 10 of {_gui} to {item-1} 
 ```
 
-For you, it's nearly the same. But for the parser, it's wayyy better. **In general, try to use global variables before using options**. Options should be reserved for when they're truly needed, or for small roles like the prefixes of variable names.
+For you, it's nearly the same. But for the parser, it's way better.&#x20;
+
+{% hint style="warning" %}
+**In general, try to use global variables before using options**. Options should be reserved for when they're truly needed, or for small roles like the prefixes of variable names.
+{% endhint %}
 
 ## Variables Section
 
@@ -64,4 +69,12 @@ Essentially, the variables section defines default values for a variable. If {te
 
 However, it is a little special for variables with types in their names, like `{test-var-2::%player%}`. Here, the variable section will give a default value of 10 to _every_ element of {`test-var-2::*}` that has a player index. If you have a new player join, and you want to get the value of `{test-var-2::%your new player%}`, the variables section will make sure that it's 10, rather than nothing.
 
-This is a useful feature, but in my opinion the variables section is mostly useless. I've gotten by for four years now without ever using it, even though I've known of its existence for 3 of those years. Setting values in `on load` or `on first join` works just as well, and can help avoid misinterpretations of what variables are set to what. Remember, **the variable section only sets the variable if it isn't already set**.&#x20;
+{% hint style="warning" %}
+Beware that the default values only work if you put in an expression of the same type. `{test-var-2::%{_my-player}%}` will not get a default value, because variables always have a type of `object`.
+{% endhint %}
+
+This is a useful feature, but in my opinion the variables section is mostly useless. I've gotten by for four years now without ever using it, even though I've known of its existence for three of those years. Setting values in `on load` or `on first join` works just as well, and can help avoid misinterpretations of what variables are set to what.&#x20;
+
+{% hint style="info" %}
+Remember, **the variable section only sets the variable if it isn't already set**.
+{% endhint %}
