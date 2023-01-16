@@ -1,12 +1,16 @@
 # The Basics
 
-This page will walk you through creating your first script. If this is too slow for you, feel free to jump ahead to the [Core Concepts](broken-reference) section. This is just to get you comfortable with the very basics of Skript.
+This page will walk you through creating your first script. If this is too slow for you, feel free to jump ahead to the [Core Concepts](broken-reference/) section. This is just to get you comfortable with the very basics of Skript.
 
 ### Creating the Script File
 
-First things first, we need somewhere to write our code. Inside the `plugins/Skript/scripts` folder, create a new text file. Name it `first-script.sk`. The `.sk` tells Skript that this is a script, and is important. You can name Skript files whatever you want, as long as they end in `.sk`. Just don't use `-` to start the name, as Skript uses that to denote disabled scripts: `-example.sk`.
+First things first, we need somewhere to write our code. Inside the `plugins/Skript/scripts` folder, create a new text file. Name it `first-script.sk`. The `.sk` tells Skript that this is a script and that it needs to pay attention to it. You can name Skript files whatever you want, as long as they end in `.sk`. Just don't use `-` to start the name, as Skript uses that to denote disabled scripts: `-example.sk`.
 
-Now you've got an empty file to play around in. You can write Skript in whatever editor you want, Notepad, Sublime, etc. Personally, I use Visual Studio Code as there are some nice formatting extensions for it. It's up to you.
+{% hint style="info" %}
+#### What program should I use to write Skript code?
+
+Any text editor works fine for writing Skript. Some, like Atom, Sublime Text, and Visual Studio Code have themes or extensions that highlight Skript's syntax to make it easier to read.
+{% endhint %}
 
 ### Writing a Simple Command
 
@@ -19,23 +23,26 @@ command /food:
         # this is where the code will go
 ```
 
-So we have two lines so far, the first one telling Skript that we're making a new command, and that it's named `/food`. The lines with `#` are comments and are just there for explanation; they don't affect the code. Now we need to tell Skript what the command does, which is what `trigger` does. There are other things that commands can have, which you can look at the core concepts page for.&#x20;
+So we have two lines so far, the first one telling Skript that we're making a new command, and that it's named `/food`. The lines with `#` are comments and are just there for explanation; they don't affect the code. Now we need to tell Skript what the command does, which is what `trigger` does. There are other things that commands can have, which you can look at the core concepts page for.
+
+{% hint style="info" %}
+#### Indentation
 
 You might also notice we've indented the `trigger:`. This is a really important concept in Skript. Indenting tells Skript what belongs to what. Everything indented after the `command` line belongs to that command, and if you un-indent, Skript thinks it is going to be something else. **The basic rule of thumb is to indent every time you see a colon (`:`)**, but there's more information on indentation [here](../core-concepts/indentation/).
+{% endhint %}
 
-So trigger is responsible for holding all the code that runs when the command is called by a player. Let's add a line that fills up a player's hunger bar. We can consult the docs for this one. Head to [https://docs.skriptlang.org/](https://docs.skriptlang.org/), click on `Expressions`,  and search for "Food" or "Hunger".&#x20;
+So, `trigger` is responsible for holding all the code that runs when the command is called by a player. Let's add some code for it to hold!&#x20;
 
-You should see one result, called Food Level. If you look at the patterns, you can see that `player`, `food`, and `level` all show up in there.  It might be a bit hard to read, which is why we have a [syntax reading tutorial](../syntax-types/reading-syntax.md), but it's pretty simple once you know how. For now, we'll just look at the example.&#x20;
+We want a code that fills the player's hunger bar, but we don't know what to write. We can consult the docs for some help. If you'll indulge me, head to [https://docs.skriptlang.org/](https://docs.skriptlang.org/), click on `Expressions`, and search for "Food" or "Hunger".&#x20;
+
+{% hint style="warning" %}
+This may seem annoying, or frivolous, but please actually visit the docs. They're your best tool for finding what you need when you have questions.
+{% endhint %}
+
+You should see one result, called Food Level. If you look at the patterns, you can see that `player`, `food`, and `level` all show up in there. It might be a bit hard to read, which is why we have a [syntax reading tutorial](../syntax-types/reading-syntax.md), but it's pretty simple once you know how. For now, we'll just look at the example.
 
 ```applescript
 set the player's food level to 10
-```
-
-We can also do some addition and subtraction really easily:
-
-```applescript
-add 2 to the player's food level
-subtract 3 from the player's food level
 ```
 
 Before we get ahead of ourselves, though, we need to talk about `the player`. In commands, the person who executes the command can be referred to as `player`, or `sender`. However, we don't always have `player` to help us out. Sometimes we'll have to get a player from a variable (explained later), or from an event value:
@@ -57,7 +64,7 @@ command /food:
 
 Perfect! A simple, easy food command. It doesn't seem very fun though. Let's give the food to the players instead, so they have something to actually eat. See if you can use the docs to find what `effect` we need to give items to players.
 
-Spoilers: it's `give`:
+Spoilers: it's `give`.
 
 ```applescript
 command /food:
@@ -76,9 +83,10 @@ command /food:
 
 Technically, we could just write `send "You received some food!"` and Skript would know who we meant to send it to, but it's good practice to be explicit in what you're doing when writing code.
 
+{% hint style="info" %}
 #### Note on Using Text in Skript
 
-Notice that all the text we want to send is surrounded by `"`. Surrounding the text with `"` is important because it tells Skript that the stuff inside isn't code, it's just some text that shouldn't really be bothered with. Text that's just text and isn't part of the actual code is referred to as a `string` in programming terminology. In Skript you'll hear it referred to as `text` and `string` interchangeably.&#x20;
+Notice that all the text we want to send is surrounded by `"`. Surrounding the text with `"` is important because it tells Skript that the stuff inside isn't code, it's just some text that shouldn't really be bothered with. Text that's just text and isn't part of the actual code is referred to as a `string` in programming terminology. In Skript you'll hear it referred to as `text` and `string` interchangeably.
 
 Note that there are some rules surrounding text that might be confusing at first. If you want to use `"`, `#`, or `%` in a string, you have to type two of them in a row. This is because Skript uses these symbols for important things, and typing two in a row tells Skript to just treat it as one, normal, non-code character.
 
@@ -101,6 +109,7 @@ send "5 + 10 = %5 + 10%" to player
 ```
 
 You can read more about the things you can and can't do with strings [here](../core-concepts/text.md).
+{% endhint %}
 
 ### If/Else
 
@@ -156,9 +165,9 @@ command /food:
         send "You receieved some food!" to player
 ```
 
-Here, we've set the different items that the player will get to the `{_item}` variable. We can then use that after the `if` to give the right item to the player. If they're an op, `{_item}` will be set to 2 golden apples, otherwise it'll be 2 steak.&#x20;
+Here, we've set the different items that the player will get to the `{_item}` variable. We can then use that after the `if` to give the right item to the player. If they're an op, `{_item}` will be set to 2 golden apples, otherwise it'll be 2 steak.
 
-Variables are explained further [here](../core-concepts/variables/), in the [Core Concepts](broken-reference) section.
+Variables are explained further [here](../core-concepts/variables/), in the [Core Concepts](broken-reference/) section.
 
 ### Expressions in Text
 
@@ -177,7 +186,8 @@ command /food:
 
 The `%%` tell Skript to pay attention and read the stuff inside as code instead of just as text. This means we can just put `{_item}` in there and "2 steaks" or "2 golden apples" will automatically be sent to the player. `%%` can also be used in variable names, like`{variable::%player's uuid}`, which is a good way to make global variables specific to one player. Global and local variables are explained [here](../core-concepts/variables/global-and-local.md).
 
-However, %% should only ever be used in those two situations: inside a string, or inside a variable. You should not be using it outside of that.&#x20;
+{% hint style="warning" %}
+However, %% should only ever be used in those two situations: inside a string, or inside a variable. You should not be using it outside of that.
 
 ```applescript
 # BAD
@@ -188,6 +198,7 @@ set %player's tool% to stone
 send "%event-item%" to player
 set {_tool-text} to "%player's tool%"
 ```
+{% endhint %}
 
 ### Using Events
 
@@ -243,8 +254,10 @@ on consume of rotten flesh:
 
 ### Conclusion
 
-Congrats on writing your first script! This was only a small part of what you can do with Skript, but I hope it helped you get your feet wet. To learn more, check out the [Core Concepts](broken-reference) pages for more in-depth tutorials. You should also become familiar with the official docs, or with SkriptHub docs if you prefer those. They'll help you tremendously.&#x20;
-
-If you had trouble following along, or didn't like this tutorial for some reason, please either message me on Discord at Sovde#0001, or open an issue on the github repository for this site.
+Congrats on writing your first script! This was only a small part of what you can do with Skript, but I hope it helped you get your feet wet. To learn more, check out the [Core Concepts](broken-reference/) pages for more in-depth tutorials. You should also become familiar with the [official docs](https://docs.skriptlang.org/index.html), or with the [SkriptHub docs](https://skripthub.net/docs/) if you prefer those. They'll help you tremendously.
 
 Happy Skripting!
+
+{% hint style="danger" %}
+If you had trouble following along, or didn't like this tutorial for some reason, please either message me on Discord at Sovde#0001, or open an issue on the github repository for this site.
+{% endhint %}

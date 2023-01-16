@@ -1,6 +1,6 @@
 # Introduction
 
-### Welcome!&#x20;
+### Welcome!
 
 This gitbook contains a crash course in Skript programming, so if you're here to learn, you're in the right place. This page contains the very basic overview of Skript, including installation and some basic ideas on how Skript works. We'll walk you through writing your first script, and hopefully get you more confident in using the language. After that, you can explore the rest of this site for more in-depth explanations and higher-level concepts. To get started, just click the `Installation` link at the bottom of this page.
 
@@ -11,14 +11,6 @@ For those of you who are already familiar with Skript, go ahead and use the navi
 ### Completed Pages
 
 * [Introduction](./)
-  * [Installation](introduction/installation.md)
-  * [The Basics](introduction/the-basics.md)
-  * [Syntax Overview](readme/syntax-overview.md)
-  * [Debugging](auxiliary-guides/debugging.md)
-  * [Useful Resources](introduction/useful-resources.md)
 * [Variables](core-concepts/variables/)
-  * [Global and Local](core-concepts/variables/global-and-local.md)
-  * [List Basics](core-concepts/variables/list-basics.md)
-  * [Options and the Variables Section](core-concepts/variables/options-and-the-variables-section.md)
+* [Conditionals](core-concepts/indentation/conditionals.md)
 * [Custom Commands](core-concepts/commands.md)
-
