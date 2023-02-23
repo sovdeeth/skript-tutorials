@@ -78,7 +78,7 @@ Much better. Let's add some class into this command though, and tell the player 
 command /food:
     trigger:
         give 2 steak to player
-        send "You receieved some food!" to player
+        send "You received some food!" to player
 ```
 
 Technically, we could just write `send "You received some food!"` and Skript would know who we meant to send it to, but it's good practice to be explicit in what you're doing when writing code.
@@ -126,10 +126,10 @@ command /food:
     trigger:
         if player is an op:
             give 2 golden apples to player
-            send "You receieved some food!" to player
+            send "You received some food!" to player
         else:
             give 2 steak to player
-            send "You receieved some food!" to player
+            send "You received some food!" to player
 ```
 
 See how the indentation shows what it supposed to run? If the player is an op, we know to run that indented code after the `if`. If they aren't, we can jump straight to the `else` and run that code instead. This is called an `if/else`, and is a basic concept across nearly every programming language. It's the most basic way of controlling what code gets run, called `control flow` in programming jargon.
@@ -147,7 +147,7 @@ command /food:
             give 2 golden apples to player
         else:
             give 2 steak to player
-        send "You receieved some food!" to player
+        send "You received some food!" to player
 ```
 
 Un-indenting the send pulls it out of the `else`, meaning it will be run whether the player is op or not. The give is a bit more complicated. Honestly, this code is fine, it's very little duplication and wouldn't be that bad. But let's keep going for the sake of teaching you about variables.
@@ -162,7 +162,7 @@ command /food:
         else:
             set {_item} to 2 steak
         give {_item} to player
-        send "You receieved some food!" to player
+        send "You received some food!" to player
 ```
 
 Here, we've set the different items that the player will get to the `{_item}` variable. We can then use that after the `if` to give the right item to the player. If they're an op, `{_item}` will be set to 2 golden apples, otherwise it'll be 2 steak.
@@ -181,7 +181,7 @@ command /food:
         else:
             set {_item} to 2 steak
         give {_item} to player
-        send "You receieved %{_item}%!" to player
+        send "You received %{_item}%!" to player
 ```
 
 The `%%` tell Skript to pay attention and read the stuff inside as code instead of just as text. This means we can just put `{_item}` in there and "2 steaks" or "2 golden apples" will automatically be sent to the player. `%%` can also be used in variable names, like`{variable::%player's uuid}`, which is a good way to make global variables specific to one player. Global and local variables are explained [here](../core-concepts/variables/global-and-local.md).
