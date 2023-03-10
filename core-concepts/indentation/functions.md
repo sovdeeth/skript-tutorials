@@ -75,9 +75,18 @@ See how the parameter value just goes inside the ()? If you have multiple parame
 
 ```applescript
 on join:
-    # a random function that take a player and 3 numbers
-    giveTenApples2(event-player, 10, 20, 30) 
+    # a random function that take a player and a number list
+    giveTenApples2(event-player, (10, 20, 30)) 
+    
+function giveTenApples2(player: player, number-list: numbers):
+    # imagine code here
 ```
+
+{% hint style="warning" %}
+Note that I used `()` around the number list. This is so that Skript doesn't get confused and think that `10, 20, 30` are all different parameters.&#x20;
+
+If you're ever experiencing errors or weird bugs with your parameters, try making sure they're surrounded with `()`, it can solve a lot of issues.
+{% endhint %}
 
 But we skipped over something earlier. We can give parameters **default values**, too.
 
