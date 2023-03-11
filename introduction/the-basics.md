@@ -228,6 +228,12 @@ on consume:
         # code here
 ```
 
+{% hint style="info" %}
+See `event-item`? This is what's called an `event-value`. These are used to get information about the event. They follow the format of `[event-]type`, where type is, well, the type. If you want to know the event-values of an event, find it on the [SkriptHub](https://skripthub.net/docs/) or [SkUnity ](https://docs.skunity.com/syntax/)docs.
+
+Here, we're getting the `event-item`, which is the item being consumed. The `consume` event also has `event-player`, too, which we'll use as `player`.
+{% endhint %}
+
 Let's use the first one, it's cleaner and actually runs slightly better. Anyway, we need to give the player regeneration. You probably already know about `/effect give`, and we could use that if we wanted. But we should stick to Skript syntax as much as possible. After a quick search on the docs, we find the following:
 
 ```applescript
