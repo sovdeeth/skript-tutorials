@@ -14,7 +14,7 @@ I will warn you, this is a very long page. Feel free to use the right-side bar t
 
 ## Crash Course in Reading Syntax
 
-You may have looked at the Skript docs and been very confused on how to turn that long string of words and symbols into actual code. The docs can be a bit daunting if you don't know the rules for how to read them. Here's a little crash course, but if you want more detail, head over to [Reading Syntax](../syntax-types/reading-syntax.md).
+You may have looked at the Skript docs and been very confused on how to turn that long string of words and symbols into actual code. The docs can be a bit daunting if you don't know the rules for how to read them. Here's a little crash course, but if you want more detail, head over to [Reading Syntax](../unfinished/syntax-types/reading-syntax.md).
 
 ```applescript
 (message|send [message[s]]) %objects% [to %players/console%] [from %player%]
