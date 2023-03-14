@@ -38,10 +38,10 @@ The last four lines of comments describe how to enable memory variables. In simp
 
 Your edited config should look like this:
 
-```yaml
+```json
 	type: CSV
 	
-	pattern: (?!-}.*
+	pattern: (?!-).*
 	
 	file: ./plugins/Skript/variables.csv
 	
