@@ -74,6 +74,22 @@ command /home:
         teleport player to {home::%player's uuid%} 
 ```
 
+{% hint style="warning" %}
+#### Note on Using Expressions in Variable Names
+
+Notice that in the home example, we're using the expression `player's uuid` in the variable name. Remember, we can't just write that directly in the variable name. Skript would think we literally mean "player's uuid" instead of replacing it with the uuid we actually want.
+
+So we make sure to surround it with `%`, so that Skript know it's an expression, not a literal bit of text.
+
+```applescript
+# Correct!
+{variable::%player's uuid%} -> {variable::0841f144-e999-42a2-a83e-9ceaf8732de4}
+
+# Incorrect :(
+{variable::player's uuid} -> {variable::player's uuid}
+```
+{% endhint %}
+
 Now each player has a unique home variable that we can get using their uuid. Note the use of `::` in the variable name. This is used to create list variables, which are explained [here](list-basics.md), with a more in- depth explanation [here](../lists/). The main thing to understand is that using `::` means we have much more power over the variable. We can delete all homes at once, we can easily see all the homes that are set, and much more.
 
 ```applescript
