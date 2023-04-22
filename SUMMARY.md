@@ -36,6 +36,7 @@
   * [Expressions](unfinished/syntax-types/expressions.md)
   * [Sections](unfinished/syntax-types/sections.md)
 * [Auxiliary Guides](unfinished/auxiliary-guides/README.md)
+  * [Cooldowns](unfinished/auxiliary-guides/cooldowns.md)
   * [Using Math](unfinished/auxiliary-guides/using-math.md)
   * [Useful Config Options](unfinished/auxiliary-guides/useful-config-options.md)
   * [Naming Conventions](unfinished/auxiliary-guides/naming-conventions.md)

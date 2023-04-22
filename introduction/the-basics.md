@@ -125,7 +125,7 @@ Conditions are syntax elements that are essentially yes/no questions, `player is
 command /food:
     trigger:
         if player is an op:
-            give 2 golden apples to player
+            give 2 golden apple to player
             send "You received some food!" to player
         else:
             give 2 steak to player
@@ -144,7 +144,7 @@ Let's make this better. First, we can just move the messages outside of the if/e
 command /food:
     trigger:
         if player is an op:
-            give 2 golden apples to player
+            give 2 golden apple to player
         else:
             give 2 steak to player
         send "You received some food!" to player
@@ -158,7 +158,7 @@ Variables are extremely useful. They basically store data for you so you can kee
 command /food:
     trigger:
         if player is an op:
-            set {_item} to 2 golden apples
+            set {_item} to 2 golden apple
         else:
             set {_item} to 2 steak
         give {_item} to player
@@ -177,7 +177,7 @@ Since we have our food in a convenient variable now, let's also tell the player 
 command /food:
     trigger:
         if player is an op:
-            set {_item} to 2 golden apples
+            set {_item} to 2 golden apple
         else:
             set {_item} to 2 steak
         give {_item} to player
