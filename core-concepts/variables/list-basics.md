@@ -49,6 +49,7 @@ Or sending a bunch of things all at once:
 
 ```applescript
 set {_info::*} to player's name, player's level, player's location
+add player's tool to {_info::*}
 send {_info::*} to player
 ```
 
