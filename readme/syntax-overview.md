@@ -5,7 +5,7 @@ Syntax is a word that means the set or rules or conventions that define a langua
 {% hint style="info" %}
 Skript has a few main types of syntaxes:
 
-* Top-level syntaxes like events, commands, function definitions, and the option and variables sections.
+* Structures like events, commands, function definitions, and the option and variables sections.
 * Sections and conditions, syntaxes that require some indentation.
 * Effects, expressions, literals and similar syntaxes that make up the fundamental bits of a line of Skript code.
 {% endhint %}
@@ -14,7 +14,7 @@ I will warn you, this is a very long page. Feel free to use the right-side bar t
 
 ## Crash Course in Reading Syntax
 
-You may have looked at the Skript docs and been very confused on how to turn that long string of words and symbols into actual code. The docs can be a bit daunting if you don't know the rules for how to read them. Here's a little crash course, but if you want more detail, head over to [Reading Syntax](../unfinished/syntax-types/reading-syntax.md).
+You may have looked at the Skript docs and been very confused on how to turn that long string of words and symbols into actual code. The docs can be a bit daunting if you don't know the rules for how to read them. Here's a little crash course, but if you want more detail, head over to [Reading Syntax](../syntax-types/reading-syntax.md).
 
 ```applescript
 (message|send [message[s]]) %objects% [to %players/console%] [from %player%]
@@ -35,9 +35,9 @@ message {_something} to player from {_another player}
 
 Hopefully this helps you see how the syntax in the docs can be turned into actual Skript code.
 
-## Top-Level Syntaxes
+## Structures
 
-Top level syntaxes are things you would write to start out a script:
+Structures, or top-level syntaxes, are things you would write to start out a script:
 
 ```applescript
 # an event
@@ -53,11 +53,11 @@ function name(p: player) :: text:
     # run code
 ```
 
-You don't need to know exactly how to use all of these, they'll be explained in greater detail later. **The important part is that none of them are indented.** All top-level syntaxes are just that, top-level. They're never indented. They contain every other bit of code inside of them. If you ever get the error `"All code must be put inside an event"`, you've encountered this principle.
+You don't need to know exactly how to use all of these, they'll be explained in greater detail later. **The important part is that none of them are indented.** All structures are top-level, they stay to the left. They're never indented. They contain every other bit of code inside of them. If you ever get the error `"All code must be put inside an event"`, you've encountered this principle.
 
 ## Fundamental Syntaxes
 
-Top-level syntaxes are pretty straightforward, just write an event, or a command, or whatever. Everything else is a little more complicated, but we'll break it down to the simple bits. The basic structure of a line of Skript code consists of two main elements: Effects and Expressions.
+Structures are pretty straightforward, just write an event, or a command, or whatever. Everything else is a little more complicated, but we'll break it down to the simple bits. The basic structure of a line of Skript code consists of two main elements: Effects and Expressions.
 
 ### Effects
 
@@ -105,7 +105,7 @@ command /give-food <player>:
         give 5 steak to arg-1
 ```
 
-This is a pretty short line, so there isn't too much to dissect. Firstly, we have our top-level syntax, which is a command. We won't be going in to the details of those here. Inside that command, we have this line of code: `give 5 steak to arg-1`. This consists of 1 effect, an alias, and a simple expression.
+This is a pretty short line, so there isn't too much to dissect. Firstly, we have our structure, which is a command. We won't be going in to the details of those here. Inside that command, we have this line of code: `give 5 steak to arg-1`. This consists of 1 effect, an alias, and a simple expression.
 
 The effect, as always, begins our line. Here we're using the Change effect, a very common effect. Specifically, we're using the `give` syntax of the effect:
 
@@ -127,7 +127,7 @@ on right click:
     send "%player's name% and %type of player's tool%" to all players
 ```
 
-Again, we have a top-level element, this time a right-click event. Inside this event, we have a `send` effect.
+Again, we have a structure, this time a right-click event. Inside this event, we have a `send` effect.
 
 ```applescript
 (message|send [message[s]]) %objects% [to %players/console%] [from %player%]

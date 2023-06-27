@@ -21,6 +21,7 @@ Here's the full list of features that you can use in your commands. They're all 
 
 ```applescript
 command /<command name> <arguments>:
+    prefix:              # command prefix, defaults to "skript"
     aliases:             # alternate command names
     executable by:       # players or console
     usage:               # the message that explains how to use the command
@@ -122,16 +123,27 @@ command /give-item <item> [with name <text>] [[and] with lore <text>]:
         give player {_item}
 ```
 
-### Executable by
+### Prefix
 
-Who can execute this command. The options are `players`, `console`, or `players and console`.
+A prefix is something **all** commands have, and it goes before the command when Minecraft registers them. You do not have to type this out when executing commands, but you can. The prefix, by default, is `skript`, which means if you leave this blank your command (with its prefix) will look like `/skript:commandName`.
 
 ```applescript
-command /shutdown:
-    executable by: console
-    trigger:
-        shutdown the server
+# This command can be run by "/test" or "/testing_prefix:test"
+command /test:
+   prefix: testing_prefix
+   trigger:
+       broadcast "test"
+       
+# This command can be run by "/test" or "/skript:test"
+command /test:
+   trigger:
+       broadcast "test"
+       
 ```
+
+{% hint style="danger" %}
+If two commands have the same name but different prefixes, only one will be registered.
+{% endhint %}
 
 ### Aliases
 
@@ -144,6 +156,30 @@ command /teleport <number> <number> <number>:
     aliases: tp
     trigger:
         teleport player to location(arg-1, arg-2, arg-3)
+```
+
+{% hint style="danger" %}
+Aliases will not overwrite commands registered by other plugins. Say another plugin registers `/spawn`, and you have the following command:
+
+```applescript
+command /tp-to-spawn:
+    aliases: spawn, sp
+    trigger:
+        teleport player to spawn of world
+```
+
+If you run `/spawn`, that other plugin's command will run. You'll need to register a new command with that name and have it run your first command.
+{% endhint %}
+
+### Executable by
+
+Who can execute this command. The options are `players`, `console`, or `players and console`.
+
+```applescript
+command /shutdown:
+    executable by: console
+    trigger:
+        shutdown the server
 ```
 
 ### Description

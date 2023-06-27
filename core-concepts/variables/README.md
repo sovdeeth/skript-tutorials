@@ -62,7 +62,7 @@ Perfect, right? We save the player's location to a variable, and then when they 
 
 Well, this is only partially correct. You see, since global variables are, in fact, global, there's only one of them at any time. So if someone else comes along and does `/sethome`, the `{home}` variable now has their home location, and if you use `/home`, you're getting teleported to their home instead!
 
-To solve this, we need to make the variable unique for each player. The best method to do this is to use the player's uuid as part of the variable name. If you use just `player` or `player's name`, you run the risk of the data no longer being useful when the player changes their name. This is why it's always recommended to use uuids, or enable the config option `use player UUIDs in variable names`, which is explained [here](../../unfinished/auxiliary-guides/useful-config-options.md).
+To solve this, we need to make the variable unique for each player. The best method to do this is to use the player's uuid as part of the variable name. If you use just `player` or `player's name`, you run the risk of the data no longer being useful when the player changes their name. This is why it's always recommended to use uuids, or enable the config option `use player UUIDs in variable names`, which is explained [here](../../auxiliary-guides/useful-config-options.md).
 
 ```applescript
 command /sethome:

@@ -39,7 +39,7 @@ We want a code that fills the player's hunger bar, but we don't know what to wri
 This may seem annoying, or frivolous, but please actually visit the docs. They're your best tool for finding what you need when you have questions.
 {% endhint %}
 
-You should see one result, called Food Level. If you look at the patterns, you can see that `player`, `food`, and `level` all show up in there. It might be a bit hard to read, which is why we have a [syntax reading tutorial](../unfinished/syntax-types/reading-syntax.md), but it's pretty simple once you know how. For now, we'll just look at the example.
+You should see one result, called Food Level. If you look at the patterns, you can see that `player`, `food`, and `level` all show up in there. It might be a bit hard to read, which is why we have a [syntax reading tutorial](../syntax-types/reading-syntax.md), but it's pretty simple once you know how. For now, we'll just look at the example.
 
 ```applescript
 set the player's food level to 10
@@ -202,7 +202,7 @@ set {_tool-text} to "%player's tool%"
 
 ### Using Events
 
-We've been using a command all this time, but events are another extremely useful way to trigger code in Skript. Events are things that happen when certain, well, events happen in the game. Say the player jumps. There's an event for that. Say a furnace burns a piece of coal. There's an event for that. Say a sheep regrows its wool. There's an event for that. You can see all the events at [https://docs.skriptlang.org/events.html](https://docs.skriptlang.org/events.html). You can also learn more about them in the[ Events page](../unfinished/syntax-types/events.md).
+We've been using a command all this time, but events are another extremely useful way to trigger code in Skript. Events are things that happen when certain, well, events happen in the game. Say the player jumps. There's an event for that. Say a furnace burns a piece of coal. There's an event for that. Say a sheep regrows its wool. There's an event for that. You can see all the events at [https://docs.skriptlang.org/events.html](https://docs.skriptlang.org/events.html). You can also learn more about them in the[ Events page](../syntax-types/events.md).
 
 Events are kind of like commands in that they're never indented. Commands and events always start all the way to the left. Since we've been giving players food, let's use an `on consume` event:
 

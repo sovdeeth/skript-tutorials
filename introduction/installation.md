@@ -6,8 +6,9 @@ Installing Skript is no different from any other plugin. You download the latest
 You should ensure your server meets the requirements for running Skript:
 
 * A Spigot, Paper, or Paper fork server jar. Spigot is the absolute minimum and Skript includes some features that are only accessible when using Paper or a fork of Paper.
-* Minecraft Version. Currently, 2.6.4 works for 1.9 - 1.19.3, but 2.7 will only work for 1.13+.&#x20;
+* Minecraft Version. Skript 2.7 works for versions 1.13+.&#x20;
   * 1.8 support can be found [here](https://github.com/Matocolotoe/Skript-1.8/releases), but is not official, nor recommended, nor guaranteed to work.
+  * 1.9-1.12 support is limited to old versions of Skript that do not receive updates (2.6.4)&#x20;
 {% endhint %}
 
 After you've downloaded the jar file, put it in your `plugins` folder in your server directory. Restart the server and Skript should generate the folder `plugins/Skript`.&#x20;

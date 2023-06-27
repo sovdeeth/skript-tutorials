@@ -156,6 +156,10 @@ Notice how there is no indentation differences, colons, and how the effect comes
 Keep note that there is no `else if` or `else` options with this method.
 {% endhint %}
 
+## If Any and If All
+
+new 2.7 shit
+
 ## Ternary Operators
 
 Ternaries are similar to the `do if` effect, but they're expressions instead. They're designed to return one thing if a condition passes and a different thing if it does not pass. A simple but straight forward example looks something like:

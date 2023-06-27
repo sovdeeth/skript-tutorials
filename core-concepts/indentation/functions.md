@@ -20,6 +20,8 @@ on join:
 
 Now, whenever someone joins, Skript sees `test()` and runs our function, broadcasting "hello world!". The act of telling Skript to run a function is named a **function call**. We just called the function test, or ran it, by using its function call.
 
+Function can be called from anywhere, and at (nearly) any time. You can use them across files! The only restriction is using them in `on load` events. Be careful there. You can also restrict a function to work only in 1 file by using `local`, which we'll get to later.
+
 {% hint style="info" %}
 This might seem a little, well, useless. Why come up with this whole function thing when you can just write the code when you want it? Why couldn't we just write the following?
 
@@ -43,7 +45,7 @@ function functionName():
 
 This is a basic function, like we saw before. The only thing that changes here is the `fuctionName`. The first character must be an alphabetic character, eg a letter, but the following characters can include digits and underscores as well. Common practices are to name functions in `camelCase` or `snake_case`.
 
-However, this is rather limiting. What if we want to do something to an object? Say we have a function called `giveTenApples()`. We don't know who to give to inside the function! This is where **parameters** come into player.
+However, this is rather limiting. What if we want to do something to an object? Say we have a function called `giveTenApples()`. We don't know who to give the apples to! This is where **parameters** come into play.
 
 ### Parameters
 
@@ -134,16 +136,55 @@ Finally, notice the new syntax at the end of the function: `return {_item}`. Thi
 Note that you cannot use `wait` in a function that returns a value. It has to return it instantly, without delay.
 {% endhint %}
 
-### Full Definition
+### Local Functions
+
+The final piece of the puzzle is whether the function is **local or global**. By default, functions are always global. This means you put the function definition in one script file, and you can call the function from any other script! It'll always do the same thing. Sometimes, however, you'll want your function to only be used by 1 script file. Perhaps you want to avoid naming conflicts, where you might accidentally have two functions named `subtract()`.&#x20;
+
+This is where **local** functions come into play. By putting `local` in front of your function definition, you can make it so that only _this_ script file can use that function. Any other script file won't even know that it exists. &#x20;
+
+```applescript
+[local] function functionName(...)...
+```
+
+{% hint style="warning" %}
+If there's a global function of the same name, your local function will **always** be prioritized over the global version. If that's a bit confusing, here's an example:
+
+```applescript
+# ----------------
+# in script-1.sk
+local function test():
+    broadcast "local!"
+
+on join:
+    test()
+# ----------------
+
+# ----------------
+# in script-2.sk
+function test():
+    broadcast "global!"
+
+on quit:
+    test()
+# ----------------
+```
+
+When a player joins, the `join` event in `script-1.sk` runs. This calls the **local** function `test()`, which broadcasts `"local!"`.&#x20;
+
+When a player joins, the `quit` event in `script-2.sk` runs. This can't see the local version of `test()`, so it calls the **global** `test()`, which broadcasts `"global!"`.
+{% endhint %}
+
+## Full Definition
 
 Now that we've explained all the parts, let's show the whole function at once:
 
 ```applescript
-function functionName(parameterName: parameterType = defaultValue) :: returnType:
+[local] function functionName(parameterName: parameterType = defaultValue) :: returnType:
 ```
 
 Hopefully by now you know all these parts, but let's recap:
 
+* **\[local]**: Whether this function is local or global. (global is default)
 * **functionName:** the name of the function, starts with a letter and can use letters, numbers, and underscores
 * **parameterName:** Optional. The name of the parameter, follows the same rules as variable names. Will be accessible as a local variable of the same name in the function.
   * **parameterType:** Required if you have a parameter. Tells Skript what type the parameter will be. Use `object` if you're unsure.
