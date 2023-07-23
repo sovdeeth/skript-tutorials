@@ -1,44 +1,26 @@
 # Vectors
 
-Vectors are what you can think of as an arrow in 3D space with some length and pointing direction. But they do not have a location associated with them.
+Vectors are extremely useful tools when working with things in 3d space, whether you need offsets, angles, velocity, and more. They're most commonly used in Skript when working with velocities and particles, but vectors can do a lot more than just that.
 
-To help with explanations and examples, we will be comparing and visualizing them as arrows in a 3D grid, despite them not being actual physical objects in the world.
+Vectors can be thought of as an arrow in 3D space, with some length and direction that it points in. Notably, they do **not** have a location associated with them. This is one of many ways to conceptualize a vector, but it's the easiest to picture for many people.
 
-__This tutorial/guide aims to go over everything related to vectors in Skript, I highly recommend not skipping sections of this as terms and concepts tend to build off of previous ones.__
+To help with explanations and examples, we will be comparing and visualizing them as arrows in a 3D grid, but remember that this is one representation!
 
-If you need to hop back to a specific section here is the outline:
+{% hint style="danger" %}
+**We highly recommend not skipping sections of this tutorial.**
 
-- [Vectors](#vectors)
-  - [Basic Vector Creation](#basic-vector-creation)
-  - [Basic Arithmetic](#basic-arithmetic)
-  - [Length](#length)
-  - [Location Offsets](#location-offsets)
-  - [Yaw and Pitch](#yaw-and-pitch)
-  - [Other Ways of Creating Vectors](#other-ways-of-creating-vectors)
-    - [Vector From Yaw and Pitch](#vector-from-yaw-and-pitch)
-    - [Vector from Radius, Yaw, and Pitch ( Spherical Vector )](#vector-from-radius-yaw-and-pitch)
-    - [Vector from Radius, Yaw, and Height ( Cylindrical Vector )](#vector-from-radius-yaw-and-height)
-    - [Vector from Location](#vector-from-location)
-    - [Location from Vector](#location-from-vector)
-    - [Vector Between Locations](#vector-between-locations)
-    - [Entity Velocity](#entity-velocity)
-  - [Miscellaneous Syntax](#misc-syntax)
-    - [Normalize Vector](#normalize-vector)
-    - [Squared Length](#squared-length)
-    - [Random Vector](#random-vector)
-  - [Slightly Advanced Syntax](#advanced-syntax)
-    - [Angle Between Vectors](#angle-between-vectors)
-    - [Rotate Vector Around XYZ](#rotate-vector-around-xyz)
-    - [Rotate Vector Around Vector](#rotate-vector-around-vector)
-    - [Dot Product](#vector-dot-product)
-    - [Cross Product](#vector-cross-product)
+&#x20;Terms and concepts tend to build off of previous ones, and if you skip ahead you may find yourself a little lost and confused.
+{% endhint %}
 
----
-
+***
 
 ## Basic Vector Creation
 
-Before we create a vector, we need to first understand what they are composed of. Vectors in Skript are composed of only 3 numbers, defined as X, Y, and Z, where the values define the "offset" in that axis, similar to how a location defines your "offset" from the center of the world on each axis. Although looking similar to locations, they __are not__ the same and do not behave the same.
+Before we create a vector, we need to first understand what they are composed of. Vectors in Skript are composed of only 3 numbers, defined as X, Y, and Z.
+
+The values define the "offset" in that axis, similar to how a location defines your "offset" from the center of the world on each axis. Although looking similar to locations, they **are not** the same and do not behave the same.
+
+To give an example, the location 5, 10, -5 means you're 5 blocks from the origin (0,0,0) in the positive x direction, 10 blocks in positive y, and 5 in the negative z direction. A vector of 5, 10, and -5 means the same thing, but it has no specific origin. It is **not** tied to the world's origin, or any specific origin.&#x20;
 
 The easiest way to create a vector in Skript is to literally define the XYZ values all at once, which can be either done with the `vector` function or the `vector` expression:
 
@@ -51,32 +33,32 @@ set {_v} to vector(0, 1, 0)
 set {_v} to vector 0, 1, 0
 
 ```
-**Note: It does not matter which method you use as they produce the same result, I personally stick to using the function method for consistency sake**
+
+{% hint style="info" %}
+It does not matter which method you use; they produce the same result. I personally stick to using the function method for consistency's sake.
+{% endhint %}
 
 If you were to visualize the vector that was created using our arrow analogy, it would look something like:
 
-![An image of an arrow pointing straight up](/media/vectors/straightup.png)
+![An image of an arrow pointing straight up](../media/vectors/straightup.png)
 
-Where the light blue arrow is the vector we just created, it's pointing straight up because we set the X and Z values to 0 and just the Y is 1.
+The light blue arrow is the vector we just created. It's pointing straight up because we set the X and Z values to 0 and just the Y is 1.
 
-Just in case the concept of looking at vectors from their individual components ( XYZ ) has not quite set in, heres a better visualization of how a vector is made up of separate components of different values ( XYZ ), which you can just think of how far in that direction the vector extends:
+In case the concept of looking at vectors from their individual components ( XYZ ) has not quite set in, here's a visualization of how the vector changes based on its components:&#x20;
 
-![A vector being created from separate components](/media/vectors/comp.gif)
+![A vector being created from separate components](../media/vectors/comp.gif)
 
-The aqua arrow being the resulting vector, and the red, green and blue arrows being the respective components that are contributing ( feel free to ignore the length for now, we will get to that in more detail ).
+The aqua arrow is the resulting vector and the red, green and blue arrows are the XYZ components. Feel free to ignore the length for now, we will get to that in more detail.
 
+There are other ways to create vectors, but we'll stick with this method for simplicity. The others will be introduced later.
 
-Now that goes over how to create a vector by defining its XYZ components, there are other ways of creating vectors but we will get to those after a couple more concepts are introduced.
-
-
----
-
+***
 
 ## Basic Arithmetic
 
-Just like with normal numbers, you can perform arithmetic ( math ) with vectors just as easily, the only difference is that you need to double the sign, ie `*` becomes `**`:
+Just like with normal numbers, you can perform arithmetic ( math ) with vectors just as easily, the only difference is that you need to double the sign, ie `*` becomes `**.`
 
-For the sake of example, we will be using the vector function to define the vectors, but you can use any other vector related expression.
+For the sake of example, we will be using the vector function to define the vectors here, but these could also be variables or other vector expressions like `player's velocity`.
 
 ```vb
 
@@ -94,17 +76,21 @@ set {_v} to vector(1, 2, 3) // vector(4, 5, 6)
 
 ```
 
-**Note: Currently the docs show that you are able to perform arithmetic with a vector and a scalar ( a single number ), which is no longer true, if you need to perform such operation, then simply replace the number with a vector where all 3 components are that number, ie instead of `vector(1, 2, 3) * 5`, you would do `vector(1, 2, 3) ** vector(5, 5, 5)`**
+{% hint style="warning" %}
+Currently the docs show that you are able to perform arithmetic with a vector and a scalar ( a single number ), which is no longer true.&#x20;
 
+If you need to perform such operation, then simply replace the number with a vector where all 3 components are that number. For example, instead of `vector(1, 2, 3) * 5`, you would do `vector(1, 2, 3) ** vector(5, 5, 5)`
+{% endhint %}
 
----
-
+***
 
 ## Length
 
-Along with having an XYZ, vectors also have a length, which is calculated from its XYZ components - it's simply done using the euclidean distance formula: `sqrt((x)^2 + (y)^2 + (z)^2)`, you can literally think of the length as the length of the "arrow", from the base to the tip. Combining the concept of length and the XYZ components, we can see how the length changes as the XYZ components are changed, and in turn how the "arrow" looks:
+Along with having an XYZ, vectors also have a length, which is calculated from its XYZ components - it's simply done using the euclidean distance formula: `sqrt((x)^2 + (y)^2 + (z)^2)`.
 
-![A gif showing the behavior of XYZ components being changed](/media/vectors/lenandxyz.gif)
+You can literally think of the length as the length of the "arrow", from the base to the tip. Combining the concept of length and the XYZ components, we can see how the length changes as the XYZ components are changed, and in turn how the "arrow" looks:
+
+![A gif showing the behavior of XYZ components being changed](../media/vectors/lenandxyz.gif)
 
 The syntax for length is as follows:
 
@@ -123,7 +109,7 @@ set {_len} to vector length of vector(1, 2, 3)
 
 ```
 
-And the expression also allows you to modify the length aswell, which will modify the components accordingly to meet that length:
+The expression also allows you to modify the length, which will modify the components accordingly to meet that length:
 
 ```vb
 
@@ -137,7 +123,7 @@ send "length: %vector length of {_v}%"
 
 ```
 
-And if you run that code, ull see a result similar to this:
+And if you run that code, you'll see a result similar to this:
 
 ```vb
 
@@ -146,17 +132,16 @@ length: 3.74
 
 vector: x: 2.67, y: 5.34, z: 8.01
 length: 10
+
 ```
 
-
----
-
+***
 
 ## Location Offsets
 
-Now that we got components and lengths out of the way, we should now mention the concept of offsetting locations with vectors, which should help solidify vectors for you as this is something you can play with in game.
+Now that you understand the basic concepts of vectors, we should now mention the ability to offset locations with vectors. This should help solidify the idea of vectors, as this is something you can play with in game.
 
-As vectors are not locations, but rather an "arrow" or "offset" in space, in Skript we can actually offset locations by vectors to get a new location with the given expression(s):
+Although vectors are not locations, but rather an "arrow" or "offset" in space, in Skript we can offset locations by vectors to get a new location with the given expression(s):
 
 ```vb
 
@@ -173,45 +158,54 @@ set {_l} to location of player ~ vector(0, 1, 0)
 
 ```
 
-The tilda symbol `~` in Skript means to offset a location by a vector, you can also use `offset by` instead.
+The code takes the location of the player and offsets it by the vector `vector(0, 1, 0)`, which just returns the same location but 1 meter higher.
 
-All that code does it take the location of the player and offset it by the vector `vector(0, 1, 0)`, which just returns the same location but 1 meter higher.
+The expression isn't black magic; all it does is take the XYZ of the location and adds the XYZ of the vector to it.&#x20;
 
-The expression is no black magic, all it does is take the XYZ of the location and adds the XYZ of the vector to it.
+```applescript
+# Assume the player is standing at 3.4, 63, -15.7
+set {_l} to location of player ~ vector(0, 1, 0)
+# We take 3.4 + 0, 63 + 1, and -15.7 + 0 to get
+# the final location of 3.4, 64, -15.7
+```
 
-Feel free to try and play around with this expression. For example, try and teleport yourself to a location offset by a vector, or set a block at a location offset by one. This expression is a really good start to playing around with vectors before moving onto more detailed things. 
+Feel free to try and play around with this expression. For example, try and teleport yourself to a location offset by a vector, or set a block at a location offset by one. This expression is a really good start to playing around with vectors before moving onto more detailed things.
 
-**Note: Offsetting is one of the only ways and most common way of dealing with both locations and vectors**
+{% hint style="info" %}
+Offsetting is one of the only and most common way of dealing with both locations and vectors. Get used to seeing it a lot.&#x20;
+{% endhint %}
 
-
----
-
+***
 
 ## Yaw and Pitch
 
-Last thing before we dive into the good and interesting stuff is yaw and pitch.
+Last thing before we dive into the interesting stuff is yaw and pitch.
 
-Yaw and pitch are just values in degrees that define your looking direction in the world, they are taken from the way airplanes fly. Yaw is your horizontal rotation ( left and right ) and pitch is your vertical rotation ( up and down ), together they allow us to describe any looking direction with 2 numbers, a better visualization can be seen here:
+Yaw and pitch are values in degrees that define your view direction in the world. Yaw is your horizontal rotation ( left and right, like on a compass) and pitch is your vertical rotation ( up and down ), together they allow us to describe any looking direction with 2 numbers.
 
-![An image showing a sphere outlining the difference between yaw and pitch](/media/vectors/yawpitch.png)
+![An image showing a sphere outlining the difference between yaw and pitch](../media/vectors/yawpitch.png)
 
-Yaw extends from 0 to 180, and then from -180 back to 0. South is 0, and 180/-180 is north.
+Yaw extends from 0 to 180, and then from -180 back to 0. South is 0, and 180/-180 is north. You can also use 0 to 360, where -90 is the same as 270.
 
 Pitch extends from -90 to 90. 90 is straight down, -90 is straight up and 0 is straight forward.
 
-**Note: If it helps you remember or understand better, try thinking of yaw and pitch as the coordinates on a sphere as you only need 2 numbers to describe where you are on the surface**
+{% hint style="info" %}
+For those interested in math, yaw and pitch are used in the [**spherical coordinate system**](https://en.wikipedia.org/wiki/Spherical\_coordinate\_system) along with radius, or length, to determine a point in 3d space. It's essentially drawing a sphere in space with a certain radius, and then using the two angles to select a single point on its surface.
 
-**Note: Setting the pitch or yaw of a vector after its creation will cause its length to be reset to 1**
+Our first method, with XYZ, was your typical **Cartesian** coordinate system.&#x20;
 
+The spherical coordinate system uses yaw, or polar angle; pitch, or azimuthal angle; and length, or radius/radial distance.
 
----
+These two can be easily converted back and forth using vectors, which is one of the most useful aspects of vectors in Skript.
+{% endhint %}
 
+***
 
 ## Other Ways of Creating Vectors
 
-Now that we got the introductory information out of the way, now we can move onto the cooler stuff with vectors.
+Now that we got the introductory information out of the way, we can move onto the cooler stuff with vectors.
 
-Creating vectors using the `vector()` function is cool and all, but it can be seen as limited and time convoluted for some applications. Luckily, Skript comes with a few other expressions that greatly help us.
+Creating vectors using the `vector()` function is cool and all, but it can be seen as limited and difficult to use for some applications. Luckily, Skript comes with a few other expressions that greatly help us.
 
 ### **Vector From Yaw and Pitch**
 
@@ -225,7 +219,7 @@ The expression looks like:
 
 ```
 
-Heres an example of creating a vector that points south and a little upwards:
+Here's an example of creating a vector that points south and a little upwards:
 
 ```vb
 
@@ -235,14 +229,17 @@ set {_v} to vector from yaw 0 and pitch -15
 
 If you were to visualize the vector with the setup from the yaw and pitch section, this is what you would see:
 
-![An image showing a sphere representing yaw and pitch](/media/vectors/vectoryawandpitch.gif)
+![An image showing a sphere representing yaw and pitch](../media/vectors/vectoryawandpitch.gif)
 
-*Note: Keep in mind that this expression will always return a vector with a length of 1*
-
+_Note: Keep in mind that this expression will always return a vector with a length of 1_
 
 ### **Vector from Radius, Yaw, and Pitch**
 
-This expression is identical to the previous, the only difference is that it allows you to adjust the length of the vector along with the yaw and pitch at the same time.
+This expression is identical to the previous, the only difference is that it allows you to adjust the length of the vector along with the yaw and pitch at the same time. &#x20;
+
+{% hint style="warning" %}
+Remember, vectors created with this syntax are no different from vectors created with the XYZ or cylindrical syntaxes. The name only refers to the way they're created.
+{% endhint %}
 
 The syntax looks like:
 
@@ -261,6 +258,10 @@ set {_v} to spherical vector radius 2, yaw 22.5, pitch 45
 ```
 
 Now with this expression, it includes the term `spherical`, which just describes how the vector is being created, essentially a vector is just being made that goes from the center of a sphere to the outer edge.
+
+{% hint style="info" %}
+For those that read the previous math note, this is because it uses the **spherical** coordinate system.
+{% endhint %}
 
 ### **Vector from Radius, Yaw, and Height**
 
@@ -284,7 +285,11 @@ set {_v} to cylindrical vector radius 2, yaw 45, height 5
 
 And if you were to visualize the created vector:
 
-![An image showing a vector being made from the center to the side of a cylinder](/media/vectors/cylvector.gif)
+![An image showing a vector being made from the center to the side of a cylinder](../media/vectors/cylvector.gif)
+
+{% hint style="info" %}
+For those that read the previous math note\[s], it's called cylindrical because it uses the **cylindrical** or **polar** coordinate system.
+{% endhint %}
 
 ### **Vector from Location**
 
@@ -370,7 +375,7 @@ set {_v3} to {_v2} -- {_v1}
 
 ```
 
-But it's still recommended to use the built in expression for this, both for performance and cleanliness reasons
+But it's still recommended to use the built in expression for this, both for performance and cleanliness reasons.
 
 ### **Entity Velocity**
 
@@ -393,11 +398,11 @@ set velocity of player to {_v2}
 
 ```
 
-**Note: Having the vector `vector(1, 0, 0)` for example, as your velocity does not mean that you will be travelling 1 meter per tick in the X direction exactly, as the game has other calculations it performs when actually moving the entity, such as gravity and drag**
+{% hint style="warning" %}
+Having the vector `vector(1, 0, 0)` for example, as your velocity does not mean that you will be travelling exactly 1 meter per tick in the X direction, as the game has other calculations it performs when moving the entity, such as gravity and drag.
+{% endhint %}
 
-
----
-
+***
 
 ## Miscellaneous Syntax
 
@@ -437,7 +442,7 @@ set vector length of {_v2} to 1
 
 Either way will result in the same, `{_v2}` will be around `vector(0.26, 0.53, 0.8)`
 
-Normalizing may seem like a useless thing to perform, but it has great uses, typically in math we like to deal with nice and clean vectors, which normalizing lets us do easily. Towards the end of this wiki we will discuss use cases and examples involding vectors, where some will utilize normalization.
+Normalizing may seem like a useless thing to perform, but it has great uses. Typically in math we like to deal with nice and clean vectors, which normalizing lets us do easily. Towards the end of this wiki we will discuss use cases and examples involving vectors, where some will utilize normalization.
 
 ### **Squared Length**
 
@@ -482,20 +487,20 @@ set {_v} to a random vector
 
 As expected, every time that code is ran, `{_v}` will be a different vector every time.
 
+{% hint style="danger" %}
+In 2.6.4, this expression isn't fully random. The 3 random numbers have a bias towards pointing to the corners of a cube, like towards 1, 1, 1. This is fixed in 2.7.
+{% endhint %}
+
 ## Slightly Advanced Syntax
 
 The concepts below are typically deemed as a little outside of the basics of vectors, but shouldn't be too complex if you understood everything so far.
 
 ### **Angle Between Vectors**
 
-
 ### **Rotate Vector Around XYZ**
-
 
 ### **Rotate Vector Around Vector**
 
-
 ### **Vector Dot Product**
-
 
 ### **Vector Cross Product**
