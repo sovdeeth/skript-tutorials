@@ -1,6 +1,6 @@
 # Installation
 
-Installing Skript is no different from any other plugin. You download the latest jar file, which can be found at [https://github.com/SkriptLang/Skript/releases](https://github.com/SkriptLang/Skript/releases).&#x20;
+Installing Skript is no different from any other plugin. You download the latest jar file, which can be found at [https://github.com/SkriptLang/Skript/releases/latest](https://github.com/SkriptLang/Skript/releases/latest).&#x20;
 
 {% hint style="warning" %}
 You should ensure your server meets the requirements for running Skript:
