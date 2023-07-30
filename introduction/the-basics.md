@@ -184,7 +184,7 @@ command /food:
         send "You received %{_item}%!" to player
 ```
 
-The `%%` tell Skript to pay attention and read the stuff inside as code instead of just as text. This means we can just put `{_item}` in there and "2 steaks" or "2 golden apples" will automatically be sent to the player. `%%` can also be used in variable names, like`{variable::%player's uuid}`, which is a good way to make global variables specific to one player. Global and local variables are explained [here](../core-concepts/variables/global-and-local.md).
+The `%%` tell Skript to pay attention and read the stuff inside as code instead of just as text. This means we can just put `{_item}` in there and "2 steaks" or "2 golden apples" will automatically be sent to the player. `%%` can also be used in variable names, like `{variable::%player's uuid%}`, which is a good way to make global variables specific to one player. Global and local variables are explained [here](../core-concepts/variables/global-and-local.md).
 
 {% hint style="warning" %}
 However, %% should only ever be used in those two situations: inside a string, or inside a variable. You should not be using it outside of that.
