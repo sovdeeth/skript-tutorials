@@ -16,7 +16,7 @@ set {hey, what's going on} to "not much, what about you?"
 
 Variables can have nearly any name you like. They have have spaces, dashes, symbols, whatever. You can put the whole Bee Movie script into a variable name, if you so choose. There are a few special ways to name variables though.
 
-By default, variables are `global`, which means they can be seen and changed by any part of your script. Often we want variables to exist only in a small section of script, which is achieved by `local` variables, with begin with `_`, like `{_variable}`. We'll get further into this difference in the [Global and Local page](global-and-local.md).
+By default, variables are `global`, which means they can be seen and changed by any part of your script. Often we want variables to exist only in a small section of script, which can be achieved by `local` variables (those that begin with `_`, like `{_variable}`). We'll get further into this difference in the Global and Local page.
 
 ### Using Variables
 
