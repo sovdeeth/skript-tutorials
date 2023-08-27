@@ -12,6 +12,24 @@ First things first, we need somewhere to write our code. Inside the `plugins/Skr
 Any text editor works fine for writing Skript. Some, like Atom, Sublime Text, and Visual Studio Code have themes or extensions that highlight Skript's syntax to make it easier to read.
 {% endhint %}
 
+### Reloading Scripts
+
+Every time you make changes to a script file, you'll want to first save your file and then run a `/skript reload` command on the server.
+
+You can reload multiple different things depending on the arguments you give this command:
+
+* `/skript reload path/to/your-script[.sk]` reloads a single script file.
+  * e.g. `/skript reload test.sk` or `/skript reload systems/enchantments`
+* `/skript reload directory/` will reload an entire directory of scripts.
+* `/skript reload scripts` will reload ALL of your scripts.
+* `/skript reload config` will reload your config file.
+* `/skript reload aliases` will reload your aliases.
+* `/skript reload all` will reload your config file, aliases, and all scripts.
+
+{% hint style="warning" %}
+Get in the habit of reloading specific scripts. Using `reload all` adds a lot of unnecessary reload time to your workflow. No need to wait 10 seconds when you could be waiting 50 milliseconds instead.
+{% endhint %}
+
 ### Writing a Simple Command
 
 Let's start with a simple command, /food. We don't want our players to go hungry, so when they run the command we'll fill up their hunger bar for them. We start by writing out the syntax for a new command. If you want to know more about this, you can skip to [Custom Commands](../core-concepts/commands.md), but most of it isn't necessary yet.
