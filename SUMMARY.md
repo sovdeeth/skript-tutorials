@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Introduction](README.md)
-  * [Installation](introduction/installation.md)
   * [The Basics](introduction/the-basics.md)
   * [Syntax Overview](readme/syntax-overview.md)
   * [Debugging](auxiliary-guides/debugging.md)
