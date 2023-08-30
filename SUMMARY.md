@@ -22,7 +22,11 @@
   * [Index Serialization](core-concepts/lists/indices-and-values.md)
 * [Text?](core-concepts/text.md)
 * [Custom Commands](core-concepts/commands.md)
-* [Vectors](core-concepts/vectors.md)
+* [Vectors](core-concepts/vectors/README.md)
+  * [Vectors in Skript](core-concepts/vectors/vectors-in-skript/README.md)
+    * [Other Ways to Create Vectors](core-concepts/vectors/vectors-in-skript/other-ways-to-create-vectors.md)
+  * [Working with Vectors](core-concepts/vectors/working-with-vectors.md)
+  * [Proper Vector Math](core-concepts/vectors/proper-vector-math.md)
 
 ## Unfinished
 
