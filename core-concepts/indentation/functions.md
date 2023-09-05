@@ -171,7 +171,7 @@ on quit:
 
 When a player joins, the `join` event in `script-1.sk` runs. This calls the **local** function `test()`, which broadcasts `"local!"`.&#x20;
 
-When a player joins, the `quit` event in `script-2.sk` runs. This can't see the local version of `test()`, so it calls the **global** `test()`, which broadcasts `"global!"`.
+When a player quits, the `quit` event in `script-2.sk` runs. This can't see the local version of `test()`, so it calls the **global** `test()`, which broadcasts `"global!"`.
 {% endhint %}
 
 ## Full Definition
