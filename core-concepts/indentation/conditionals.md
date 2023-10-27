@@ -158,7 +158,42 @@ Keep note that there is no `else if` or `else` options with this method.
 
 ## If Any and If All
 
-new 2.7 shit
+So what happens if you want to check a bunch of conditions? While you *can* use Inline Ifs or create a huge indentation pyramids, there is a much better way. Skript's `if any` and `if all` statements allow for multiple conditions in *the same condition*. This is super useful when you have tons of conditions like so:
+
+```applescript
+if:
+    player's gamemode is survival
+    player is swimming
+    player is wearing a turtle helmet
+    player is holding a trident
+    player's tool is enchanted with riptide
+    name of player is "Aquaman"
+then:
+    send "You passed all the conditions!" to player
+else:
+    send "You didn't meet all the conditions! to player
+```
+
+{% hint style="info" %}
+Notice the `else` statement! These multi-conditions can include `else if` and `else` statements inside of them!
+{% endhint %}
+
+This works well because we can check multiple conditions without losing code quality. But what if we only need a single condition to be met out of many? For example, what if we want **both** admins and builders to have build permission? In that case, we can use `if any` like this:
+
+```applescript
+on block place:
+    if any: 
+        player is op
+        player's gamemode is creative
+        name of player is "BobTheBuilder"
+    then:
+        send "You placed a block!" to player
+    else:
+        send "You don't have permission to place blocks!" to player
+        cancel event
+```
+
+When **at least** one condition is met, the player will be able to place the block. However, if none of the conditions are met, the event will be cancelled.
 
 ## Ternary Operators
 
