@@ -166,11 +166,11 @@ Yaw and pitch let us describe a 3D vector. We still use length and yaw just like
 ```
 In XYZ: (3, -2, 1)
 
-Length: sqrt( 9 + 4 + 1 ) = sqrt( 13 ) = 3.61
+Length: sqrt( 9 + 4 + 1 ) = sqrt( 14 ) = 3.74
 Yaw: 288.4 degrees
 Pitch: 32.3 degrees
 
-(3.61, ∠288.4, ∠32.3)
+(3.74, ∠288.4, ∠32.3)
 ```
 
 And remember, everything that worked for 1D and 2D still works here. We can still add, subtract, multiply, and otherwise change our 3D vector in much the same ways.
