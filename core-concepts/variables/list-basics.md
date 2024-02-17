@@ -89,7 +89,7 @@ if {_list::*} contains "hello":
 We can also loop lists, which opens up even more possibilities:
 
 ```applescript
-set {list::*} to "hey", "how", "are", "you" and 55
+set {_list::*} to "hey", "how", "are", "you" and 55
 loop {_list::*}:
     send "%loop-index% - %loop-value%" to player
 ```
