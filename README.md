@@ -13,7 +13,7 @@ We'll walk you through writing your first script, and hopefully get you more con
 For those of you who are already familiar with Skript, go ahead and use the navigation table on the left to jump to what you're interested in. If you're interested in helping out, the github repo is linked on the right. Pull requests are welcome!
 
 {% hint style="warning" %}
-**Note:** These tutorials are for the current version of the SkriptLang Skript fork (2.7.0) and are not guaranteed to be correct for other versions or forks. This site does not include any tutorials for addons, either.
+**Note:** These tutorials are for the current version of the SkriptLang Skript fork (2.8.X) and are not guaranteed to be correct for other versions or forks. This site does not include any tutorials for addons, either.
 {% endhint %}
 
 ## Installation
@@ -24,7 +24,7 @@ Installing Skript is no different from any other plugin. You download the latest
 You should ensure your server meets the requirements for running Skript:
 
 * A Spigot, Paper, or Paper fork server jar. Spigot is the absolute minimum and Skript includes some features that are only accessible when using Paper or a fork of Paper.
-* Minecraft Version. Skript 2.7 works for versions 1.13+.&#x20;
+* Minecraft Version. Skript 2.8 works for versions 1.13+.&#x20;
   * 1.8 support can be found [here](https://github.com/Matocolotoe/Skript-1.8/releases), but is not official, nor recommended, nor guaranteed to work.
   * 1.9-1.12 support is limited to old versions of Skript that do not receive updates (2.6.4)&#x20;
 {% endhint %}
