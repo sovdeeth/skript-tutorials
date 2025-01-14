@@ -118,7 +118,7 @@ We've looked at functions as ways to simply run code, but one of the most powerf
 on join:
     give player customItem((name of player), golden apple)
     
-function customItem(name: string, base-item: item) :: item:
+function customItem(name: string, base-item: item) returns item:
     set {_item} to {_base-item} named {_name}
     set lore of {_item} to "&fWelcome back!"  
     return {_item}
@@ -128,7 +128,7 @@ This would give a golden apple with the player's name and some custom lore to an
 
 There's a few things to pay attention too. First, notice that now we're putting the function call in the `give` effect. It's no longer on its own line. This means we're using it as an `expression`, not an `effect`. Functions are one of, if not the only, syntax in Skript with this property.&#x20;
 
-Secondly, notice how the function definition has changed. We now have this `:: type:` bit on the end, which tells Skript what type the function is going to return. Again, if you make this plural you can return a list.
+Secondly, notice how the function definition has changed. We now have this `returns type` bit on the end, which tells Skript what type the function is going to return. Again, if you make this plural you can return a list.
 
 Finally, notice the new syntax at the end of the function: `return {_item}`. This is how we tell the function what value it should return. In this case, it's `{_item}`. Return will also stop execution of the function there, like `stop` does.&#x20;
 
@@ -179,15 +179,15 @@ When a player quits, the `quit` event in `script-2.sk` runs. This can't see the 
 Now that we've explained all the parts, let's show the whole function at once:
 
 ```applescript
-[local] function functionName(parameterName: parameterType = defaultValue) :: returnType:
+[local] function functionName(paramName: paramType = defaultValue) returns returnType:
 ```
 
 Hopefully by now you know all these parts, but let's recap:
 
 * **\[local]**: Whether this function is local or global. (global is default)
 * **functionName:** the name of the function, starts with a letter and can use letters, numbers, and underscores
-* **parameterName:** Optional. The name of the parameter, follows the same rules as variable names. Will be accessible as a local variable of the same name in the function.
-  * **parameterType:** Required if you have a parameter. Tells Skript what type the parameter will be. Use `object` if you're unsure.
+* **paramName:** Optional. The name of the parameter, follows the same rules as variable names. Will be accessible as a local variable of the same name in the function.
+  * **paramType:** Required if you have a parameter. Tells Skript what type the parameter will be. Use `object` if you're unsure.
   * **defaultValue:** Optional. Allows the function calls to omit this parameter, and Skript will automatically use this value instead.
 * **returnType:** Optional, only use if you intend to return something. Again, use `object` if you're unsure. Remember, functions that return values can't use `wait`.
 
