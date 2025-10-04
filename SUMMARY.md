@@ -16,7 +16,7 @@
   * [Global and Local](core-concepts/variables/global-and-local.md)
   * [List Basics](core-concepts/variables/list-basics.md)
   * [Options and the Variables Section](core-concepts/variables/options-and-the-variables-section.md)
-  * [Ephemeral Variables, Metadata, and Alternatives](core-concepts/variables/memory-variables-metadata-and-alternatives.md)
+  * [Metadata and Alternatives](core-concepts/variables/memory-variables-metadata-and-alternatives.md)
 * [Lists](core-concepts/lists/README.md)
   * [Filters](core-concepts/lists/filters.md)
   * [Index Serialization](core-concepts/lists/indices-and-values.md)

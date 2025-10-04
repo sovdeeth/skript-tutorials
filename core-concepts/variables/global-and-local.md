@@ -89,8 +89,22 @@ set {variable::%player's uuid%} to "hello!"
 ```
 {% endhint %}
 
+#### Ephemeral Variables
+
+Ephemeral variables, (or memory/RAM/temporary vars) are very easy to wrap your head around. Simply, they're just global variables with one difference. They don't get saved when the server stops. This means, of course, you don't get to save data over long-term, but you still get the benefits of the global scope. Plus, since they're not saved, they're also a lot gentler on the server.
+
+These are extremely useful for when you need to transfer information between triggers or over time, but you don't really need to keep it around for the long term.
+
+{% hint style="info" %}
+&#x20;Whenever you're using global variables, ask yourself if you really need to save this information over restarts. If you don't, try using an ephemeral variable.
+{% endhint %}
+
+Ephemeral variables are any variable that starts with `-`: `{-test}`, `{-my::list::of::numbers::*}`, or `{-a very long name}`. Like local variables, they aren't saved over restarts, which means they are also roughly twice as fast as using a standard global variable.
+
 ### When to Use Global vs Local
 
 Let's summarize. Local variables are great at storing data that we only need for a short time, in a specific place. We don't have to worry about using unique names, or resetting it to some starting value, or anything like that. **Local variables should be used whenever possible.**
 
-Global variables are great for storing data in the long term, like over server restarts. They're also great for allowing us to access data from wherever. We can set the variable in one command and access it in a completely different event, even in a different file. **Global variables should be used when needed, either for long-term storage or for communication across various parts of a script or throughout time.**
+Global variables are great for storing data in the long term, like over server restarts. They're also great for allowing us to access data from wherever. We can set the variable in one command and access it in a completely different event, even in a different file. **Global variables should be used for long-term storage across restarts.**
+
+Ephemeral variables are global, but aren't stored over restarts. **Use ephemeral variables for communication across various parts of a script or throughout time, where long-term saving isn't necessary.**
