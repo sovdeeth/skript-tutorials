@@ -104,4 +104,4 @@ In this code, we loop through a list, sending the index and the value each time.
 5 - 55
 ```
 
-This can be really useful for things like leaderboards, for knowing what elements exist in your list, and much more. If you want to see some more advanced uses of lists, ways to best optimize them, as well as some of the quirks and trickier aspects of using them, check out the [Lists page](../lists/).
+This can be really useful for things like leaderboards, for knowing what elements exist in your list, and much more. If you want to see some more advanced uses of lists, ways to best optimize them, as well as some of the quirks and trickier aspects of using them, check out the [Lists page](../../unfinished/lists/).

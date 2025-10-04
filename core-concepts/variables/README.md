@@ -90,7 +90,7 @@ So we make sure to surround it with `%`, so that Skript know it's an expression,
 ```
 {% endhint %}
 
-Now each player has a unique home variable that we can get using their uuid. Note the use of `::` in the variable name. This is used to create list variables, which are explained [here](list-basics.md), with a more in- depth explanation [here](../lists/). The main thing to understand is that using `::` means we have much more power over the variable. We can delete all homes at once, we can easily see all the homes that are set, and much more.
+Now each player has a unique home variable that we can get using their uuid. Note the use of `::` in the variable name. This is used to create list variables, which are explained [here](list-basics.md), with a more in- depth explanation [here](../../unfinished/lists/). The main thing to understand is that using `::` means we have much more power over the variable. We can delete all homes at once, we can easily see all the homes that are set, and much more.
 
 ```applescript
 # clear all homes

@@ -126,7 +126,7 @@ send "5 + 10 = %5 + 10%" to player
 # to the player
 ```
 
-You can read more about the things you can and can't do with strings [here](../core-concepts/text.md).
+You can read more about the things you can and can't do with strings [here](../unfinished/text.md).
 {% endhint %}
 
 ### If/Else

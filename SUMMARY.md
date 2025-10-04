@@ -17,10 +17,6 @@
   * [List Basics](core-concepts/variables/list-basics.md)
   * [Options and the Variables Section](core-concepts/variables/options-and-the-variables-section.md)
   * [Metadata and Alternatives](core-concepts/variables/memory-variables-metadata-and-alternatives.md)
-* [Lists](core-concepts/lists/README.md)
-  * [Filters](core-concepts/lists/filters.md)
-  * [Index Serialization](core-concepts/lists/indices-and-values.md)
-* [Text?](core-concepts/text.md)
 * [Custom Commands](core-concepts/commands.md)
 * [Vectors](core-concepts/vectors/README.md)
   * [Vectors in Skript](core-concepts/vectors/vectors-in-skript/README.md)
@@ -30,6 +26,10 @@
 
 ## Unfinished
 
+* [Text?](unfinished/text.md)
+* [Lists](unfinished/lists/README.md)
+  * [Filters](unfinished/lists/filters.md)
+  * [Index Serialization](unfinished/lists/indices-and-values.md)
 * [Syntax Types](syntax-types/README.md)
   * [Reading Syntax](syntax-types/reading-syntax.md)
   * [Events](syntax-types/events.md)
