@@ -1,6 +1,6 @@
 # The Basics
 
-This page will walk you through creating your first script. If this is too slow for you, feel free to jump ahead to the [Core Concepts](broken-reference/) section. This is just to get you comfortable with the very basics of Skript.
+This page will walk you through creating your first script. If this is too slow for you, feel free to jump ahead to the [Core Concepts](broken-reference) section. This is just to get you comfortable with the very basics of Skript.
 
 ### Creating the Script File
 
@@ -106,13 +106,13 @@ Technically, we could just write `send "You received some food!"` and Skript wou
 
 Notice that all the text we want to send is surrounded by `"`. Surrounding the text with `"` is important because it tells Skript that the stuff inside isn't code, it's just some text that shouldn't really be bothered with. Text that's just text and isn't part of the actual code is referred to as a `string` in programming terminology. In Skript you'll hear it referred to as `text` and `string` interchangeably.
 
-Note that there are some rules surrounding text that might be confusing at first. If you want to use `"`, `#`, or `%` in a string, you have to type two of them in a row. This is because Skript uses these symbols for important things, and typing two in a row tells Skript to just treat it as one, normal, non-code character.
+Note that there are some rules surrounding text that might be confusing at first. If you want to use `"` or `%` in a string, you have to type two of them in a row. This is because Skript uses these symbols for important things, and typing two in a row tells Skript to just treat it as one, normal, non-code character.
 
 ```applescript
-send "this is a ""test"" of percent signs (%%) and hash tags (##)" to player
+send "this is a ""test"" of percent signs (%%)" to player
 
 # this sends: 
-# this is a "test" of percent signs (%) and hash tags (#)
+# this is a "test" of percent signs (%)
 # to the player
 ```
 
