@@ -1,54 +1,18 @@
-# Memory Variables, Metadata, and Alternatives
+# Ephemeral Variables, Metadata, and Alternatives
 
-While our standard global and local variables are versatile tools and are perfectly capable on their own, there are situations where we may want to consider different ways of storing information. We have plenty of options, especially if we include addons, but I want to focus on a few main ones. Namely, Memory (or Ram) Variables and Metadata.
+While our standard global and local variables are versatile tools and are perfectly capable on their own, there are situations where we may want to consider different ways of storing information. We have plenty of options, especially if we include addons, but I want to focus on a few main ones. Namely, Ephemeral (or 'memory') Variables and Metadata.
 
-## Memory Variables
+## Ephemeral Variables
 
-Memory variables are very easy to wrap your head around. Simply, they're just global variables with one difference. They don't get saved when the server stops. This means, of course, you don't get to save data over long-term, but you still get the benefits of the global scope. Plus, since they're not saved, they're also a lot gentler on the server.
+Ephemeral variables, (or memory/RAM/temporary vars) are very easy to wrap your head around. Simply, they're just global variables with one difference. They don't get saved when the server stops. This means, of course, you don't get to save data over long-term, but you still get the benefits of the global scope. Plus, since they're not saved, they're also a lot gentler on the server.
 
 These are extremely useful for when you need to transfer information between triggers or over time, but you don't really need to keep it around for the long term.
 
 {% hint style="info" %}
-&#x20;Whenever you're using global variables, ask yourself if you really need to save this information over restarts. If you don't, try using a memory variable.
+&#x20;Whenever you're using global variables, ask yourself if you really need to save this information over restarts. If you don't, try using an ephemeral variable.
 {% endhint %}
 
-Now, I haven't explained how to actually write a memory variable yet, and this is because it's not a default part of Skript. You have to specifically enable them in your `config.sk` file, and they can take whatever form you give them. The general convention is to make all variables that start with `-` memory variables, eg: `{-variable}, {-list::*}`. You can do this by opening your `config.sk` file and scrolling down to line 310 or so, where you should see the following:
-
-```yaml
-default:
-	# The default "database" is a simple text file, with each variable on a separate line and the variable's name, type, and value separated by commas.
-	# This is the last database in this list to catch all variables that have not been saved anywhere else.
-	# You can modify this database freely, but make sure to know what you're doing if you don't want to loose any variables.
-	
-	type: CSV
-	
-	pattern: .*
-	
-	file: ./plugins/Skript/variables.csv
-	
-	backup interval: 2 hours
-	
-	# PS: If you don't want some variables to be saved in any database (e.g. variables that contain an %entity% which usually despawn when the server is shut down)
-	# you can modify the last database's pattern to not match all variables, e.g. use '(?!x_).*' to match all variables that don't start with 'x_'.
-	# Be very cautious when doing this however as unsaved variables cannot be recovered after the server has been stopped.
-	# I recommend to use a single character to denote unsaved variables (similar to local variables' '_'), e.g. '-', in which case the last database's pattern should be '(?!-).*'.
-```
-
-The last four lines of comments describe how to enable memory variables. In simple terms, you just replace the `pattern:` line with a new regex pattern, one that excludes variables that start with `-`. As you can see in the comments, this pattern is `(?!-).*`.
-
-Your edited config should look like this:
-
-```json
-	type: CSV
-	
-	pattern: (?!-).*
-	
-	file: ./plugins/Skript/variables.csv
-	
-	backup interval: 2 hours
-```
-
-However, know that you can set this pattern to whatever you want, which also means your memory variables can follow whatever format you want as long as you set the pattern up properly. I advise sticking with convention and using `-`.
+Ephemeral variables are any variable that starts with `-`: `{-test}`, `{-my::list::of::numbers::*}`, or `{-a very long name}`. Like local variables, they aren't saved over restarts, which means they are also roughly twice as fast as using a standard global variable.
 
 ## Metadata
 
