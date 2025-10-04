@@ -9,7 +9,7 @@ We'll walk you through writing your first script, and hopefully get you more con
 For those of you who are already familiar with Skript, go ahead and use the navigation table on the left to jump to what you're interested in. If you're interested in helping out, the github repo is linked on the right. Pull requests are welcome!
 
 {% hint style="warning" %}
-**Note:** These tutorials are for the current version of the SkriptLang Skript fork (2.9.X) and are not guaranteed to be correct for other versions or forks. This site does not include any tutorials for addons, either.
+**Note:** These tutorials are for the current version of the SkriptLang Skript fork (2.13.X) and are not guaranteed to be correct for other versions or forks. This site does not include any tutorials for addons, either.
 {% endhint %}
 
 ## Installation
@@ -19,11 +19,10 @@ Installing Skript is no different from any other plugin. You download the latest
 {% hint style="warning" %}
 You should ensure your server meets the requirements for running Skript:
 
-* A Spigot, Paper, or Paper fork server jar. Spigot is the absolute minimum and Skript includes some features that are only accessible when using Paper or a fork of Paper.
-* Java 11 or higher
-* Minecraft Version. Skript 2.9 works for versions 1.13+.&#x20;
-  * 1.8 support can be found [here](https://github.com/Matocolotoe/Skript-1.8/releases), but is not official, nor recommended, nor guaranteed to work.
-  * 1.9-1.12 support is limited to old versions of Skript that do not receive updates (2.6.4)&#x20;
+* A Paper or Paper fork server jar. 2.13 requires Paper, though 2.12 and below can be run with Spigot at the cost of losing some features.
+* Java 17 or higher
+* Minecraft Version. Skript 2.13 works for versions 1.20.4+.&#x20;
+  * For 1.19.4+, use Skript 2.12.2.
 {% endhint %}
 
 After you've downloaded the jar file, put it in your `plugins` folder in your server directory. Restart the server and Skript should generate the folder `plugins/Skript`.&#x20;
