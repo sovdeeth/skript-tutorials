@@ -26,7 +26,7 @@ set {_v} to cylindrical vector radius 2, yaw 45, height 5
 
 And if you were to visualize the created vector:
 
-![An image showing a vector being made from the center to the side of a cylinder (Credit: ThatOneWizard)](../../../media/vectors/cylvector.gif)
+![An image showing a vector being made from the center to the side of a cylinder (Credit: ThatOneWizard)](../../../.gitbook/assets/cylvector.gif)
 
 ***
 
@@ -114,7 +114,7 @@ set {_v1} to vector from location(0, 64, 0)
 
 set {_v2} to vector from location(100, 32, -20)
 
-set {_v3} to {_v2} -- {_v1}
+set {_v3} to {_v2} - {_v1}
 
 ```
 
@@ -138,7 +138,7 @@ Along with being able to get the velocity of an entity, we are able to modify it
 ```vb
 
 set {_v} to velocity of player
-set {_v2} to {_v} ** vector(2, 2, 2) ++ vector(1, 2, -3)
+set {_v2} to {_v} * vector(2, 2, 2) + vector(1, 2, -3)
 set velocity of player to {_v2}
 
 ```
@@ -168,7 +168,3 @@ set {_v} to a random vector
 ```
 
 As expected, every time that code is ran, `{_v}` will be a different vector every time.
-
-{% hint style="danger" %}
-In 2.6.4, this expression isn't fully random. The 3 random numbers have a bias towards pointing to the corners of a cube, like towards 1, 1, 1. This is fixed in 2.7.
-{% endhint %}

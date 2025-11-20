@@ -139,7 +139,7 @@ In 2D, there are now two ways to write a vector:
 
 Finally, to the good stuff! As I'm sure you have guessed by now, all we have to do to go from 2D to 3D is add a third number line, which will be called Z. Now, our vectors will look like `(x, y, z)` which I'm certain is familiar to anyone who has played Minecraft.
 
-![A vector being created from separate components (Credit: ThatOneWizard)](../../media/vectors/comp.gif)
+![A vector being created from separate components (Credit: ThatOneWizard)](../../.gitbook/assets/comp.gif)
 
 Computing length, like in 2D, involves the distance formula:
 
@@ -147,7 +147,7 @@ Computing length, like in 2D, involves the distance formula:
 sqrt( x^2 + y^2 + z^2 ) = length
 ```
 
-![A gif showing the behavior of XYZ components being changed](../../media/vectors/lenandxyz.gif)
+![A gif showing the behavior of XYZ components being changed](../../.gitbook/assets/lenandxyz.gif)
 
 In the above gif, you can see how the changes to the X, Y, and Z components of a vector affect its length. You can also see the direction changing, but like in 2D, it's pretty tricky to calculate. Since this is a Skript tutorial, and Skript does the math for you behind the scenes, we'll skip it like we did for 2D.
 
@@ -157,7 +157,7 @@ Calculation aside, we need some way to describe the direction a vector points in
 
 This is where **pitch** comes in. This is the same idea, but it's the angle for how far up/down the vector is pointing. You can see a diagram below, where yaw is blue and pitch is pink.&#x20;
 
-![An image showing a sphere outlining the difference between yaw and pitch](../../media/vectors/yawpitch.png)
+![An image showing a sphere outlining the difference between yaw and pitch](../../.gitbook/assets/yawpitch.png)
 
 You can view your own yaw and pitch in Minecraft via the F3 menu. Try looking around and seeing how the numbers change.
 

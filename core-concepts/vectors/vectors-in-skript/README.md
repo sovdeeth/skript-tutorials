@@ -26,13 +26,13 @@ This is our X, Y, Z form, and it's the easiest to think about to start with. If 
 
 If you were to visualize the vector `(0, 1, 0)`, it would look something like:
 
-<figure><img src="../../../media/vectors/straightup.png" alt=""><figcaption><p>A vector pointing directly up. (Credit: ThatOneWizard)</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/straightup.png" alt=""><figcaption><p>A vector pointing directly up. (Credit: ThatOneWizard)</p></figcaption></figure>
 
 The light blue arrow is the vector we just created. It's pointing straight up because we set the X and Z values to 0 and just the Y is 1.
 
 In case the concept of looking at vectors from their individual components ( XYZ ) has not quite set in, here's a visualization of how the vector changes based on its components:&#x20;
 
-<figure><img src="../../../media/vectors/comp.gif" alt=""><figcaption><p>A vector being created from separate components (Credit: ThatOneWizard)</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/comp.gif" alt=""><figcaption><p>A vector being created from separate components (Credit: ThatOneWizard)</p></figcaption></figure>
 
 The aqua arrow is the resulting vector and the red, green and blue arrows are the XYZ components.&#x20;
 
@@ -80,7 +80,7 @@ set {_v} to spherical vector radius 2, yaw 22.5, pitch 45
 
 Now with this expression, it includes the term `spherical`, which just describes how the vector is being created, essentially a vector is just being made that goes from the center of a sphere to the outer edge.
 
-![An image showing a sphere representing yaw and pitch](../../../media/vectors/vectoryawandpitch.gif)
+![An image showing a sphere representing yaw and pitch](../../../.gitbook/assets/vectoryawandpitch.gif)
 
 {% hint style="info" %}
 You can also create a vector of length 1 using just yaw and pitch:
@@ -106,31 +106,25 @@ There are a lot of other ways to get vectors in Skript, but the above three are 
 
 ## Basic Arithmetic
 
-Just like with normal numbers, you can perform arithmetic ( math ) with vectors just as easily, the only difference is that you need to double the sign, ie `*` becomes `**.`
+Just like with normal numbers, you can perform arithmetic ( math ) with vectors just as easily.
 
 For the sake of example, we will be using the vector function to define the vectors here, but these could also be variables or other vector expressions like `player's velocity`.
 
 ```vb
 
-set {_v} to vector(1, 2, 3) ++ vector(4, 5, 6)
+set {_v} to vector(1, 2, 3) + vector(4, 5, 6)
 # {_v} will be vector(5, 7, 9)
 
-set {_v} to vector(1, 2, 3) -- vector(4, 5, 6)
+set {_v} to vector(1, 2, 3) - vector(4, 5, 6)
 # {_v} will be vector(-3, -3, -3)
 
-set {_v} to vector(1, 2, 3) ** vector(4, 5, 6)
+set {_v} to vector(1, 2, 3) * vector(4, 5, 6)
 # {_v} will be vector(4, 10, 18)
 
-set {_v} to vector(1, 2, 3) // vector(4, 5, 6)
+set {_v} to vector(1, 2, 3) / vector(4, 5, 6)
 # {_v} will be vector(0.25, 0.4, 0.5)
 
 ```
-
-{% hint style="warning" %}
-Currently the docs show that you are able to perform arithmetic with a vector and a scalar ( a single number ), which is no longer true.&#x20;
-
-If you need to perform such operation, then simply replace the number with a vector where all 3 components are that number. For example, instead of `vector(1, 2, 3) * 5`, you would do `vector(1, 2, 3) ** vector(5, 5, 5)`
-{% endhint %}
 
 ***
 
