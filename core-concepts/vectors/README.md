@@ -175,6 +175,29 @@ Pitch: 32.3 degrees
 
 And remember, everything that worked for 1D and 2D still works here. We can still add, subtract, multiply, and otherwise change our 3D vector in much the same ways.
 
+## 4 Local Axes
+
+So far, we've been thinking about vectors using **global axes**, where the X, Y, and Z values are strict to the Minecraft world, regardless of which way you're facing; X always points East, Y always points up, and Z always points South.
+
+But sometimes, you might want to offset something relative to a player, location or other entity entity - forward, backward, left, right, up or down from the position. This is where **local axes** can be used.
+
+When you use local axes, the X, Y, and Z of your vector are reinterpreted based on the yaw and pitch of the location. Since all locations in Minecraft carry a yaw and pitch, this works for any location - not just players or entities.
+
+| Component | Local meaning | Positive | Negative |
+|-----------|---------------|----------|----------|
+| X | Left / Right | Right | Left |
+| Y | Up / Down | Up | Down |
+| Z | Forward / Back | Forward | Back |
+
+So, a vector of `(0, 1, 5)`, using local axes, means: *1 block up, and 5 blocks forward* - where "forward" is determined by the location's yaw and pitch.
+
+In Skript, you can apply this by appending `using local axes` to the end of the syntax you've already read about:
+
+```skript
+player's location offset by vector(0, 1, 5) using local axes
+```
+What's great about local axes is that all of the rules & tricks of vectors you've already read about apply exactly the same here, but work locally to a specific location rather than to the world.
+
 ***
 
 ## What is a Vector?
