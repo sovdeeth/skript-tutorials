@@ -191,7 +191,7 @@ Since all locations in Minecraft carry a yaw and pitch, this works for any locat
 | Y | Up / Down | Up | Down |
 | Z | Forward / Back | Forward | Back |
 
-So, a vector of `(0, 1, 5)`, using local axes, means: *1 block up, and 5 blocks forward* - where "forward" is determined by the location's yaw and pitch.
+So, a vector of `(0, 1, 5)`, using local axes, means `1 block up, and 5 blocks forward`.
 
 In Skript, you can apply this by appending `using local axes` to the end of the syntax you've already read about:
 
