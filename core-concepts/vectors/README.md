@@ -181,7 +181,9 @@ So far, we've been thinking about vectors using **global axes**, where the X, Y,
 
 But sometimes, you might want to offset something relative to a player, location or other entity,  such as forward, backward, left, right, up or down from the position. This is where **local axes** can be used.
 
-When you use local axes, the X, Y, and Z of your vector are reinterpreted based on the yaw and pitch of the location. Since all locations in Minecraft carry a yaw and pitch, this works for any location - not just players or entities.
+When you use local axes, the X, Y, and Z of your vector are reinterpreted based on the yaw and pitch of the location. This means X becomes left, Z becomes forwards, and Y becomes upwards, the direction the top of your head points. To return to commands, this is like using `/tp @s ^1 ^ ^-5`.
+
+Since all locations in Minecraft carry a yaw and pitch, this works for any location.
 
 | Component | Local meaning | Positive | Negative |
 |-----------|---------------|----------|----------|
