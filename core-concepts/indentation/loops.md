@@ -161,7 +161,7 @@ loop {_list::*}:
 loop integers between 1 and arg 1:
     # skip odd numbers 
     # (mod() gives the remainder, so dividing odd numbers by 2 gives a remainder of 1)
-    if mod(loop-number, 2) == 1:
+    if mod(loop-number, 2) = 1:
         continue
         
     broadcast loop-number * loop-number
