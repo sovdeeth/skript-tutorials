@@ -177,7 +177,7 @@ And remember, everything that worked for 1D and 2D still works here. We can stil
 
 ## 4 Local Axes
 
-So far, we've been thinking about vectors using **global axes**, where the X, Y, and Z values are strict to the Minecraft world, regardless of which way you're facing; X always points East, Y always points up, and Z always points South.
+So far, we've been thinking about vectors using **global axes**, where the X, Y, and Z values are aligned to the Minecraft world, regardless of which way you're facing: X always points East, Y always points up, and Z always points South. To relate this to Minecraft commands, it's like using `/tp @s ~1 ~ ~-5` to teleport yourself.
 
 But sometimes, you might want to offset something relative to a player, location or other entity entity - forward, backward, left, right, up or down from the position. This is where **local axes** can be used.
 
