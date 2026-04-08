@@ -188,7 +188,7 @@ Since all locations in Minecraft carry a yaw and pitch, this works for any locat
 | Component | Positive | Negative |
 |-----------|----------|----------|
 | X | Left | Right |
-| Y | Up | Down
+| Y | Up | Down |
 | Z | Forward | Back |
 
 So, a vector of `(0, 1, 5)`, using local axes, means `1 block up, and 5 blocks forward`.
