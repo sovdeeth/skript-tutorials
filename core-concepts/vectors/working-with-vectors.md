@@ -44,6 +44,32 @@ Feel free to try and play around with this expression. For example, try and tele
 Offsetting is one of the only and most common way of dealing with both locations and vectors. Get used to seeing it a lot.&#x20;
 {% endhint %}
 
+## Offsetting in Local Axes
+
+So far, we've been thinking about vectors using **global axes**, where the X, Y, and Z values are aligned to the Minecraft world, regardless of which way you're facing: X always points East, Y always points up, and Z always points South. To relate this to Minecraft commands, it's like using `/tp @s ~1 ~ ~-5` to teleport yourself.
+
+But sometimes, you might want to offset something relative to a player, location, or other entity, such as forward, backward, left, right, up or down from the position. This is where **local axes** can be used.
+
+When you use local axes, the X, Y, and Z of your vector are reinterpreted based on the yaw and pitch of the location. This means X becomes left, Z becomes forwards, and Y becomes upwards, the direction the top of your head points. To return to commands, this is like using `/tp @s ^1 ^ ^-5`.
+
+Since all locations in Minecraft carry a yaw and pitch, this works for any location.
+
+| Component | Positive | Negative |
+| --------- | -------- | -------- |
+| X         | Left     | Right    |
+| Y         | Up       | Down     |
+| Z         | Forward  | Back     |
+
+So, a vector of `(0, 1, 5)`, using local axes, means `1 block up, and 5 blocks forward`.
+
+In Skript, you can apply this by appending `using local axes` to the end of the syntax you've already read about:
+
+```skript
+player's location offset by vector(0, 1, 5) using local axes
+```
+
+What's great about local axes is that all of the rules & tricks of vectors you've already read about apply exactly the same here, but work locally to a specific location rather than to the world.
+
 ## Practical Example: Particles
 
 One of the most common uses of vectors in Skript is to create particle effects. And one of the most useful shapes to create with particles is a line. And it just so happens that vectors are _really_ good at making lines.

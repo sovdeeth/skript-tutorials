@@ -11,7 +11,7 @@ They can be a bit tricky to wrap your head around, so we'll start small and buil
 {% hint style="danger" %}
 **We highly recommend not skipping sections of this tutorial.**
 
-&#x20;Terms and concepts tend to build off of previous ones, and if you skip ahead you may find yourself a little lost and confused.
+Terms and concepts tend to build off of previous ones, and if you skip ahead you may find yourself a little lost and confused.
 
 That said, if you understand the basics of what a vector is, feel free to skip to [Vectors in Skript](vectors-in-skript/).
 {% endhint %}
@@ -24,7 +24,7 @@ That said, if you understand the basics of what a vector is, feel free to skip t
 A vector is a quantity with a magnitude and a direction.
 {% endhint %}
 
-&#x20;Doesn't that clear everything up?
+Doesn't that clear everything up?
 
 While at first that definition feels vague and unhelpful, that's because the concept of a vector is very broad and can be used in many ways. We need to narrow our definition a bit in order to get something that's useful to use.
 
@@ -76,7 +76,7 @@ Now things get a bit more interesting. With two dimensions, we have a whole plan
 
 <figure><img src="../../.gitbook/assets/2dv.jpg" alt=""><figcaption><p>A 2D plane with some basic vectors</p></figcaption></figure>
 
-Essentially, we now have 2 number lines, one horizontal and one vertical, and we can draw 1 dimensional vectors along both. Unfortunately, we now have to distinguish between horizontal and vertical.&#x20;
+Essentially, we now have 2 number lines, one horizontal and one vertical, and we can draw 1 dimensional vectors along both. Unfortunately, we now have to distinguish between horizontal and vertical.
 
 As I'm sure most of you know, we generally consider the horizontal axis to be the x-axis and the vertical one to be the y-axis, so we can say the green vector travels 5 units in the positive x direction and 0 units in the y direction, which we'll denote as `(5, 0)`. Likewise, the blue and red vectors would be `(0, 3)` and `(0, -4)` respectively.
 
@@ -115,10 +115,10 @@ sqrt( 3^2 + 4^2 ) = sqrt( 25 ) = 5
 ```
 
 {% hint style="info" %}
-&#x20;This is also called the "distance formula", and will show up again in 3D.
+This is also called the "distance formula", and will show up again in 3D.
 {% endhint %}
 
-Direction is more complicated. I won't get into the math here, but it involves trigonometry. Basically, we'll use a compass to guide us. Pointing right (+x) will be 0 degrees, up (+y) is 90, left is 180, and down is 270, or -90.&#x20;
+Direction is more complicated. I won't get into the math here, but it involves trigonometry. Basically, we'll use a compass to guide us. Pointing right (+x) will be 0 degrees, up (+y) is 90, left is 180, and down is 270, or -90.
 
 Our green vector is 0 degrees, the red vector is 90, and our blue vector is a very nice 53.13 degrees.
 
@@ -153,9 +153,9 @@ In the above gif, you can see how the changes to the X, Y, and Z components of a
 
 ### Yaw and Pitch
 
-Calculation aside, we need some way to describe the direction a vector points in. We can start with our compass idea from back in 2D. In general, this "compass" is called the **yaw**. It tells you the horizontal direction the vector is pointing. But for 3D, we need vertical direction too.&#x20;
+Calculation aside, we need some way to describe the direction a vector points in. We can start with our compass idea from back in 2D. In general, this "compass" is called the **yaw**. It tells you the horizontal direction the vector is pointing. But for 3D, we need vertical direction too.
 
-This is where **pitch** comes in. This is the same idea, but it's the angle for how far up/down the vector is pointing. You can see a diagram below, where yaw is blue and pitch is pink.&#x20;
+This is where **pitch** comes in. This is the same idea, but it's the angle for how far up/down the vector is pointing. You can see a diagram below, where yaw is blue and pitch is pink.
 
 ![An image showing a sphere outlining the difference between yaw and pitch](../../.gitbook/assets/yawpitch.png)
 
@@ -174,31 +174,6 @@ Pitch: 32.3 degrees
 ```
 
 And remember, everything that worked for 1D and 2D still works here. We can still add, subtract, multiply, and otherwise change our 3D vector in much the same ways.
-
-## 4 Local Axes
-
-So far, we've been thinking about vectors using **global axes**, where the X, Y, and Z values are aligned to the Minecraft world, regardless of which way you're facing: X always points East, Y always points up, and Z always points South. To relate this to Minecraft commands, it's like using `/tp @s ~1 ~ ~-5` to teleport yourself.
-
-But sometimes, you might want to offset something relative to a player, location, or other entity, such as forward, backward, left, right, up or down from the position. This is where **local axes** can be used.
-
-When you use local axes, the X, Y, and Z of your vector are reinterpreted based on the yaw and pitch of the location. This means X becomes left, Z becomes forwards, and Y becomes upwards, the direction the top of your head points. To return to commands, this is like using `/tp @s ^1 ^ ^-5`.
-
-Since all locations in Minecraft carry a yaw and pitch, this works for any location.
-
-| Component | Positive | Negative |
-|-----------|----------|----------|
-| X | Left | Right |
-| Y | Up | Down |
-| Z | Forward | Back |
-
-So, a vector of `(0, 1, 5)`, using local axes, means `1 block up, and 5 blocks forward`.
-
-In Skript, you can apply this by appending `using local axes` to the end of the syntax you've already read about:
-
-```skript
-player's location offset by vector(0, 1, 5) using local axes
-```
-What's great about local axes is that all of the rules & tricks of vectors you've already read about apply exactly the same here, but work locally to a specific location rather than to the world.
 
 ***
 
