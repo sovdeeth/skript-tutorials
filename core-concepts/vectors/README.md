@@ -185,11 +185,11 @@ When you use local axes, the X, Y, and Z of your vector are reinterpreted based 
 
 Since all locations in Minecraft carry a yaw and pitch, this works for any location.
 
-| Component | Local meaning | Positive | Negative |
-|-----------|---------------|----------|----------|
-| X | Left / Right | Right | Left |
-| Y | Up / Down | Up | Down |
-| Z | Forward / Back | Forward | Back |
+| Component | Positive | Negative |
+|-----------|----------|----------|
+| X | Left | Right |
+| Y | Up | Down
+| Z | Forward | Back |
 
 So, a vector of `(0, 1, 5)`, using local axes, means `1 block up, and 5 blocks forward`.
 
